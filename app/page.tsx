@@ -1,3 +1,4 @@
+import Reviews from "./reviews";
 import InspectionFinder from "./inspection-finder";
 
 const services = [
@@ -17,30 +18,31 @@ export default function Home() {
     <main>
       <header className="site-header">
         <a className="logo" href="#top" aria-label="לויתן הנדסה">
-          <img src="/assets/img/logo-transparent.png" width="1556" height="1332" alt="לויתן הנדסה" />
+          <img className="header-brand-logo" src="/assets/img/logo-transparent.png" width="1556" height="1332" alt="" /><span className="brand-copy"><span className="brand-tagline">בדק בית | איכות הבנייה</span></span>
         </a>
         <nav aria-label="ניווט ראשי">
           <a href="#services">שירותים</a>
           <a href="#check">מה נבדק</a>
           <a href="#about">אודות</a>
+          <a href="#reviews">המלצות</a>
           <a href="#contact">יצירת קשר</a>
         </nav>
-        <a className="header-cta" href="#finder">בחירת בדיקה <span>↙</span></a>
+        <details className="mobile-nav"><summary aria-label="פתיחת תפריט ניווט"><span aria-hidden="true">☰</span></summary><nav aria-label="תפריט נייד"><a href="#top">ראשי</a><a href="#services">שירותים</a><a href="#about">אודות</a><a href="#reviews">המלצות</a><a href="#contact">יצירת קשר</a></nav></details>
       </header>
 
       <section className="hero" id="top">
         <div className="hero-copy">
-          <p className="eyebrow">לויתן הנדסה · בדק בית ופיקוח</p>
-          <h1>לפני שאתם<br />חותמים על הנכס,<br /><em>בודקים אותו.</em></h1>
-          <p className="hero-lead">בדיקה הנדסית יסודית, דוח ברור וליווי אישי לפני קבלת מפתח או חתימה על עסקה.</p>
+          <p className="eyebrow">לויתן הנדסה · בדק בית ובקרת איכות בנייה</p>
+          <h1>הבית שלכם.<br /><em>האחריות שלנו.</em></h1>
+          <p className="hero-lead hero-service-line"><span>בדק בית מקצועי</span><span aria-hidden="true">|</span><span>איתור ליקויי בנייה</span><span aria-hidden="true">|</span><span>חוות דעת הנדסית</span></p>
           <div className="hero-actions">
-            <a className="primary" href="#finder">מצאו את הבדיקה המתאימה <span>↙</span></a>
+            <a className="primary" href="https://wa.me/972556625745" target="_blank" rel="noreferrer">לתיאום בדיקה <span>←</span></a>
             <a className="phone" href="tel:+972556625745">055‑662‑5745</a>
           </div>
-          <p className="proof"><span>★</span> 5.0 · ביקורות מאומתות ב־Google</p>
+          <a className="proof hero-reviews-link" href="#reviews"><span aria-hidden="true">★</span><span>לקוחות מספרים</span><span className="reviews-link-arrow" aria-hidden="true">←</span></a>
         </div>
         <figure className="hero-image">
-          <img src="/assets/img/hero.jpg" width="2400" height="1029" alt="בדיקה באתר בנייה" fetchPriority="high" />
+          <img src="/assets/img/hero-architecture-v4.webp" width="1672" height="941" alt="המחשה אדריכלית של מגדל מגורים באבן וזכוכית" fetchPriority="high" />
           <figcaption>תיעוד מלא של כל ממצא, מהשטח ועד הדוח.</figcaption>
         </figure>
       </section>
@@ -49,14 +51,15 @@ export default function Home() {
         <span>הנדסאי בניין מוסמך</span><span>דוח עד 5 ימי עסקים</span><span>מכשור לאיתור רטיבות</span><span>ליווי גם אחרי הבדיקה</span>
       </section>
 
-      <InspectionFinder />
 
       <section className="services section" id="services">
-        <div className="section-head"><p className="eyebrow">מה עושים</p><h2>בדיקה אחת,<br /><em>שמונעת שנים של תקלות.</em></h2></div>
+        <div className="section-head"><p className="eyebrow">בודקים. מתעדים. מסבירים.</p><h2>השירותים שלנו</h2></div>
         <div className="service-list">
-          {services.map(([title, copy], index) => <article className="service" key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{copy}</p><a href="#finder" aria-label={`בחירת ${title}`}>←</a></article>)}
+          {services.map(([title, copy], index) => <article className="service" key={title}><span className="service-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">{index === 0 ? <><path d="M4 15 16 4l12 11M7 13v15h18V13M13 28V18h6v10" /></> : index === 1 ? <><rect x="7" y="6" width="19" height="23" rx="2"/><path d="M12 6V3h9v3M12 15l3 3 6-6M12 24h9"/></> : <><path d="M8 3h12l6 6v20H8zM20 3v7h6M12 19l3 3 6-6"/></>}</svg></span><h3>{title}</h3><p>{copy}</p><a href="#finder" aria-label={`בחירת ${title}`}>←</a></article>)}
         </div>
       </section>
+
+      <InspectionFinder />
 
       <section className="checks section" id="check">
         <div className="section-head"><p className="eyebrow">מה נבדק</p><h2>כל ממצא מקבל<br /><em>מקום בדוח.</em></h2></div>
@@ -67,10 +70,10 @@ export default function Home() {
 
       <section className="about section" id="about">
         <div className="about-image"><img src="/assets/img/about.jpg" width="1200" height="1500" alt="ידידיה לויתן" /></div>
-        <div className="about-copy"><p className="eyebrow">מי בודק את הנכס</p><h2>הצד שלכם בשולחן,<br /><em>כשמולכם יושב הקבלן.</em></h2><p>שמי ידידיה לויתן, הנדסאי בניין ומנהל פרויקטים, עם ניסיון בפיקוח, בקרת איכות ובדיקות מבנים.</p><p>המטרה שלי ברורה: להגן על האינטרסים שלכם, לאתר ליקויים בזמן ולספק דוח מקצועי שיחסוך עלויות ותקלות בעתיד.</p><div className="signature"><strong>ידידיה לויתן</strong><span>הנדסאי בניין ומנהל פרויקטים</span></div></div>
+        <div className="about-copy"><p className="eyebrow">מי בודק את הנכס</p><h2>נעים להכיר,<br /><em>ידידיה לויתן.</em></h2><p>שמי ידידיה לויתן, הנדסאי בניין ומנהל פרויקטים, עם ניסיון בפיקוח, בקרת איכות ובדיקות מבנים.</p><p>המטרה שלי ברורה: להגן על האינטרסים שלכם, לאתר ליקויים בזמן ולספק דוח מקצועי שיחסוך עלויות ותקלות בעתיד.</p><div className="signature"><strong>ידידיה לויתן</strong><span>הנדסאי בניין ומנהל פרויקטים</span></div></div>
       </section>
 
-      <section className="review section"><p className="eyebrow">לקוחות מספרים</p><blockquote>״ידידיה היה מאוד יסודי במהלך הבדיקה — עבר סעיף סעיף, עם כל הציוד המקצועי, והרגשנו בטוחים לאורך כל התהליך.״</blockquote><p className="reviewer">גיל פרידמן · ביקורת מאומתת ב־Google</p></section>
+      <Reviews />
 
       <section className="insights section" id="insights" aria-labelledby="insights-title">
         <div className="insights-heading">
@@ -163,6 +166,7 @@ export default function Home() {
             <a href="#services">שירותים</a>
             <a href="#check">מה נבדק</a>
             <a href="#about">אודות</a>
+          <a href="#reviews">המלצות</a>
             <a href="#contact">יצירת קשר</a>
           </div>
 

@@ -16,7 +16,7 @@ export default function InspectionFinder() {
     : "היי ידידיה, אשמח לתאם בדיקה.";
 
   return (
-    <section className="finder" aria-labelledby="finder-title">
+    <section id="finder" className="finder" aria-labelledby="finder-title">
       <div className="finder-heading">
         <p className="eyebrow">מתחילים בהחלטה אחת</p>
         <h2 id="finder-title">איזו בדיקה מתאימה לנכס שלך?</h2>
