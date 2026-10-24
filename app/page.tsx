@@ -2,6 +2,7 @@ import AboutSection from "./about-section";
 import { BUSINESS, NEW_APARTMENT_PATH, whatsappLink } from "../lib/business";
 import Reviews from "./reviews";
 import BuyerGuide from "./buyer-guide";
+import SiteFooter from "./site-footer";
 import WhatsAppIcon from "./whatsapp-icon";
 import type { Metadata } from "next";
 
@@ -77,54 +78,7 @@ export default function Home() {
       <BuyerGuide />
 
 
-      <footer className="site-footer" id="footer">
-        <div className="footer-cta">
-          <div>
-            <p className="footer-kicker">לפני שמתקדמים עם הנכס</p>
-            <h2>מקבלים תמונה הנדסית ברורה.</h2>
-          </div>
-          <a href={whatsappLink()} target="_blank" rel="noreferrer">
-            תיאום בדיקה ב־WhatsApp <WhatsAppIcon />
-          </a>
-        </div>
-
-        <div className="footer-main">
-          <div className="footer-brand">
-            <img src="/assets/img/logo-transparent.png" width="1556" height="1332" alt="לויתן הנדסה" />
-            <p>בדק בית, פיקוח וחוות דעת הנדסיות — בליווי אישי ומקצועי.</p>
-          </div>
-
-          <div className="footer-column">
-            <h3>ניווט</h3>
-            <a href="/services/">שירותים</a>
-            <a href="#check">מה נבדק</a>
-            <a href="#about">אודות</a>
-          <a href="#reviews">המלצות</a>
-            <a href="#contact">יצירת קשר</a>
-          </div>
-
-          <div className="footer-column">
-            <h3>שירותים</h3>
-            <a href={NEW_APARTMENT_PATH}>בדק בית לדירה חדשה</a>
-            <a href="/services/#used-apartment">בדיקת דירה יד שנייה</a>
-            <a href="/services/#engineering-opinion">חוות דעת הנדסית</a>
-            <a href="/services/#shared-areas">בדיקת שטחים משותפים</a>
-          </div>
-
-          <div className="footer-column footer-contact">
-            <h3>מדברים ישירות</h3>
-            <a className="footer-phone" href={`tel:${BUSINESS.telephone}`}>055‑662‑5745</a>
-            <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>
-            <p>מרכז · שפלה · ירושלים</p>
-            <span>מענה אישי מידידיה לויתן</span>
-          </div>
-        </div>
-
-        <div className="footer-bottom">
-          <span>© 2026 לויתן הנדסה. כל הזכויות שמורות.</span>
-          <a href="#top">חזרה למעלה ↑</a>
-        </div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }
