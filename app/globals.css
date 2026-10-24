@@ -640,3 +640,7 @@ section[id]{scroll-margin-top:112px}
   .customer-reviews .reviews-bridge{text-wrap:wrap}
   .customer-reviews .reviews-bridge strong{display:block;margin-top:4px}
 }
+
+/* One vector mark for WhatsApp actions throughout the site. */
+.business-whatsapp-icon{display:inline-block;width:20px;height:20px;min-width:20px;flex:none;vertical-align:middle}
+.hero-actions .business-whatsapp-icon,.footer-cta .business-whatsapp-icon{width:20px;height:20px}

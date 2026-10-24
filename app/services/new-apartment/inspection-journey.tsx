@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import WhatsAppIcon from "../../whatsapp-icon";
 import { BUSINESS, whatsappLink } from "../../../lib/business";
 import { apartmentStages, propertyTypes, initialDetails, validateStep, inspectionMessage, type InspectionDetails } from "../../../lib/inspection";
 
@@ -85,7 +86,7 @@ export default function InspectionJourney() {
               <div className="journey-field"><label htmlFor="inspection-notes">הערות נוספות <span>(רשות)</span></label><textarea id="inspection-notes" name="notes" maxLength={1500} rows={3} value={data.notes} onChange={e => update("notes", e.target.value)} {...fieldProps("notes")} /><small>{data.notes.length.toLocaleString("he-IL")} / 1,500 תווים</small>{error("notes")}</div>
               <div className="journey-honeypot" aria-hidden="true"><label htmlFor="inspection-website">אתר אינטרנט</label><input id="inspection-website" name="website" tabIndex={-1} autoComplete="off" value={data.website} onChange={e => update("website", e.target.value)} /></div>
               <label className="journey-consent"><input type="checkbox" checked={data.consent} onChange={e => update("consent", e.target.checked)} {...fieldProps("consent")} /><span>אני מאשר/ת שימוש בפרטים לצורך טיפול בפנייה ויצירת קשר, בהתאם ל<a href="/privacy/" target="_blank" rel="noreferrer">מדיניות הפרטיות</a>.</span></label>{error("consent")}
-              <div className="journey-contact-actions"><button type="button" className="journey-primary" onClick={openWhatsapp}>שליחת הודעה ב-WhatsApp <span aria-hidden="true">↗</span></button><button type="button" className="journey-secondary" onClick={sendLead} aria-describedby={!endpoint ? "form-availability" : undefined}>{sending ? "שולחים את הפרטים…" : "שליחת פרטים ונחזור אליכם"}</button></div>
+              <div className="journey-contact-actions"><button type="button" className="journey-primary" onClick={openWhatsapp}>שליחת הודעה ב-WhatsApp <WhatsAppIcon /></button><button type="button" className="journey-secondary" onClick={sendLead} aria-describedby={!endpoint ? "form-availability" : undefined}>{sending ? "שולחים את הפרטים…" : "שליחת פרטים ונחזור אליכם"}</button></div>
               <p className="journey-note">פתיחת WhatsApp מכינה את ההודעה בלבד. השליחה מתבצעת על ידכם בתוך WhatsApp.</p>
               {!endpoint && <p id="form-availability" className="journey-availability">שליחת הטופס דרך האתר תהיה זמינה לאחר השלמת חיבור הדוא״ל. בינתיים אפשר לפנות ב־WhatsApp או <a href={`tel:${BUSINESS.telephone}`}>בטלפון</a>.</p>}
               <div aria-live="polite">{notice && <p className="journey-server-notice" role="alert">{notice}</p>}{whatsappOpened && <p className="journey-note">המשיכו ל־WhatsApp ולחצו על שליחה כדי להעביר את הפנייה.</p>}</div>

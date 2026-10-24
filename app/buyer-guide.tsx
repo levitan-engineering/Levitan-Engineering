@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { whatsappLink } from "../lib/business";
 import "./buyer-guide.css";
+import WhatsAppIcon from "./whatsapp-icon";
 
 type IconKind = "key" | "plan" | "report" | "home" | "calendar";
 function GuideIcon({ kind }: { kind: IconKind }) {
@@ -16,9 +17,6 @@ function GuideIcon({ kind }: { kind: IconKind }) {
   return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[kind]}</svg>;
 }
 
-function WhatsAppIcon() {
-  return <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.927-3.558 7.931-7.93a7.9 7.9 0 0 0-2.328-5.607M7.994 14.521a6.57 6.57 0 0 1-3.356-.921l-.24-.144-2.492.654.666-2.43-.157-.25a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.954-6.58 6.59-6.58a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.635-2.958 6.585-6.592 6.585m3.615-4.932c-.197-.099-1.17-.578-1.351-.645-.182-.066-.314-.099-.446.1-.132.197-.512.644-.628.776-.115.132-.231.148-.429.05-.197-.1-.835-.308-1.591-.984-.588-.524-.984-1.173-1.1-1.371-.115-.198-.012-.305.087-.403.09-.089.198-.231.297-.347.099-.115.132-.198.198-.33.066-.132.033-.248-.016-.347-.05-.099-.446-1.075-.611-1.472-.16-.386-.323-.334-.446-.34l-.38-.006c-.132 0-.347.05-.529.248-.181.198-.694.678-.694 1.654s.711 1.918.81 2.05c.099.132 1.399 2.136 3.39 2.995.474.205.844.327 1.132.419.476.151.909.13 1.252.079.382-.057 1.17-.479 1.335-.942.165-.463.165-.86.116-.942-.05-.083-.182-.132-.38-.231" /></svg>;
-}
 
 const topics: { label: string; title: string; copy: string; icon: IconKind; detail: ReactNode }[] = [
   {
@@ -29,7 +27,7 @@ const topics: { label: string; title: string; copy: string; icon: IconKind; deta
   },
   {
     label: "מה בודקים?", icon: "plan",
-    title: "מהנדס או בודק מקצועי מזהה ליקויים שלא תמיד רואים בעין",
+    title: "ליקויים שלא תמיד רואים בעין",
     copy: "בדיקה מקצועית משלבת ידע בתחום הבנייה, ניסיון וציוד מתאים, כדי לזהות ליקויים גלויים וסימנים לבעיות אפשריות.",
     detail: <><ul><li>ריצוף וחיפויים.</li><li>עבודות טיח, צבע וגמר.</li><li>דלתות וחלונות.</li><li>אינסטלציה וכלים סניטריים.</li><li>מערכות חשמל – בדיקות בתחום ההסמכה והסמכות המתאימות בלבד.</li><li>סימני רטיבות ואיטום.</li><li>ליקויי בטיחות נראים לעין.</li><li>התאמה לתוכניות ולמפרט, ככל שהמסמכים זמינים והנושא כלול בהיקף הבדיקה.</li></ul><p className="guide-scope-note">היקף הבדיקה נקבע לפי השירות שהוזמן. בדיקות הרסניות, בדיקות מעבדה ובדיקות של מערכות נסתרות אינן נכללות אלא אם הוסכם עליהן במפורש במסגרת השירות.</p></>,
   },
@@ -102,11 +100,11 @@ export default function BuyerGuide() {
         <div className="guide-press-brand"><p className="guide-eyebrow">ידע מקצועי מהתקשורת</p><span lang="en" dir="ltr">TheMarker</span><small>כתבת רקע · 2014</small></div>
         <div className="guide-press-story"><h3 id="guide-press-title">חוקרים בטכניון: ב-100% מהדירות החדשות בישראל יש ליקויי בנייה</h3><p>כתבת רקע על מחקר שעסק בליקויי בנייה בדירות חדשות ובשאלות של איכות הביצוע והפיקוח.</p><p className="guide-source">רז סמולסקי <span aria-hidden="true">·</span> <time dateTime="2014-02-13">13.02.2014</time> <span aria-hidden="true">·</span> TheMarker</p><a className="guide-press-link" href="https://www.themarker.com/realestate/2014-02-13/ty-article/0000017f-dc45-db5a-a57f-dc6f4ee60000" target="_blank" rel="noreferrer">לקריאת הכתבה המקורית <span aria-hidden="true">←</span></a><small className="guide-press-context">הכתבה מובאת כרקע היסטורי; הנתונים בה אינם מוצגים כנתונים עדכניים. היא אינה כתבה על לוויתן הנדסה או המלצה על העסק.</small></div>
       </aside>
-      <section className="guide-contact" aria-labelledby="guide-contact-title" data-guide-reveal>
+      <section className="guide-contact" id="contact" aria-labelledby="guide-contact-title" data-guide-reveal>
         <p className="guide-eyebrow">השלב הבא</p>
-        <h3 id="guide-contact-title">לפני שמקבלים החלטה על הנכס –<br className="guide-desktop-break" /> בודקים עם מקצוענים.</h3>
-        <p>מתקרבים לקבלת דירה חדשה? בדיקה מקצועית של לוויתן הנדסה תעזור לכם להכיר את מצב הנכס ולזהות ליקויים לפני קבלת החלטות חשובות.</p>
-        <div className="guide-actions"><a className="guide-book" href="#contact">לתיאום בדיקה מקצועית <span aria-hidden="true">←</span></a><a className="guide-whatsapp" href={whatsappLink("שלום, הגעתי מהמדריך לרוכשי דירה באתר לוויתן הנדסה. אשמח לקבל פרטים על בדיקת דירה חדשה מקבלן.")} target="_blank" rel="noreferrer"><WhatsAppIcon />דברו איתנו ב־WhatsApp</a></div>
+        <h3 id="guide-contact-title">לפני קבלת המפתח – דואגים לשקט הנפשי שלכם.</h3>
+        <p>בדיקת דירה חדשה מקבלן תסייע לכם לאתר ליקויי בנייה, להבין את מצב הדירה ולקבל דוח מקצועי ומסודר.</p>
+        <div className="guide-actions"><a className="guide-book" href="/services/new-apartment/#inspection-journey">לתיאום בדיקת דירה חדשה <span aria-hidden="true">←</span></a><a className="guide-whatsapp" href={whatsappLink("שלום, הגעתי מהמדריך לרוכשי דירה באתר לוויתן הנדסה. אשמח לקבל פרטים על בדיקת דירה חדשה מקבלן.")} target="_blank" rel="noreferrer"><WhatsAppIcon />דברו איתנו ב־WhatsApp</a></div>
       </section>
       <p className="guide-note">המידע במדריך הוא כללי ואינו תחליף לבדיקה של הנכס המסוים או לייעוץ משפטי. היקף השירות נקבע לפי ההזמנה וההסמכות המתאימות.</p>
     </div>

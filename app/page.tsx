@@ -2,6 +2,7 @@ import AboutSection from "./about-section";
 import { BUSINESS, NEW_APARTMENT_PATH, whatsappLink } from "../lib/business";
 import Reviews from "./reviews";
 import BuyerGuide from "./buyer-guide";
+import WhatsAppIcon from "./whatsapp-icon";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -44,7 +45,7 @@ export default function Home() {
           <h1>הבית שלכם.<br /><em>האחריות שלנו.</em></h1>
           <p className="hero-lead hero-service-line"><span>בדק בית מקצועי</span><span aria-hidden="true">|</span><span>איתור ליקויי בנייה</span><span aria-hidden="true">|</span><span>חוות דעת הנדסית</span></p>
           <div className="hero-actions">
-            <a className="primary" href={whatsappLink()} target="_blank" rel="noreferrer">לתיאום בדיקה <span>←</span></a>
+            <a className="primary" href={whatsappLink()} target="_blank" rel="noreferrer">לתיאום בדיקה <WhatsAppIcon /></a>
             <a className="phone" href={`tel:${BUSINESS.telephone}`}>055‑662‑5745</a>
           </div>
           <a className="proof hero-reviews-link" href="#reviews"><span aria-hidden="true">★</span><span>לקוחות מספרים</span><span className="reviews-link-arrow" aria-hidden="true">←</span></a>
@@ -75,7 +76,6 @@ export default function Home() {
 
       <BuyerGuide />
 
-      <section className="contact section" id="contact"><div><p className="eyebrow">השלב הבא</p><h2>נכס לפני רכישה<br /><em>לא בודקים לבד.</em></h2></div><div className="contact-panel"><h3>רוצים לתאם בדיקה?</h3><p>כתבו ב־WhatsApp וקבלו מענה ישיר מידידיה.</p><a className="primary" href={whatsappLink()} target="_blank" rel="noreferrer">תיאום בדיקה ב־WhatsApp <span>↙</span></a><a className="contact-phone" href={`tel:${BUSINESS.telephone}`}>055‑662‑5745</a></div></section>
 
       <footer className="site-footer" id="footer">
         <div className="footer-cta">
@@ -84,7 +84,7 @@ export default function Home() {
             <h2>מקבלים תמונה הנדסית ברורה.</h2>
           </div>
           <a href={whatsappLink()} target="_blank" rel="noreferrer">
-            תיאום בדיקה ב־WhatsApp <span>↙</span>
+            תיאום בדיקה ב־WhatsApp <WhatsAppIcon />
           </a>
         </div>
 

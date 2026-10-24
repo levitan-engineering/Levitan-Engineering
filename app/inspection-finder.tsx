@@ -1,5 +1,6 @@
 "use client";
 
+import WhatsAppIcon from "./whatsapp-icon";
 import { useState } from "react";
 import { NEW_APARTMENT_PATH, whatsappLink } from "../lib/business";
 
@@ -48,7 +49,7 @@ export default function InspectionFinder() {
         rel="noreferrer"
       >
         {selectedChoice ? `לתיאום ${selectedChoice.label}` : "בחרו סוג בדיקה כדי להתחיל"}
-        <span aria-hidden="true">↙</span>
+        {selected === "new" ? <span aria-hidden="true">←</span> : <WhatsAppIcon />}
       </a>
     </section>
   );
