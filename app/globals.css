@@ -627,3 +627,16 @@ section[id]{scroll-margin-top:112px}
 .reviews-whatsapp-mark{width:20px;height:20px;flex:none}
 @media(max-width:700px){.customer-reviews .reviews-grid{grid-template-columns:minmax(0,1fr);gap:16px}.customer-reviews .reviews-heading{margin-bottom:28px}.customer-reviews .reviews-heading .reviews-intro{font-size:16px;line-height:1.8}.customer-reviews .customer-review{padding:22px}.customer-reviews .customer-review blockquote{font-size:17px;line-height:1.8;margin:14px 0 18px}.customer-reviews .customer-review figcaption{padding-top:14px}.reviews-trust{font-size:14px;gap:10px;margin:0 auto 28px}.reviews-bridge{margin:30px auto;font-size:18px}.reviews-cta{padding:28px 20px}.reviews-cta h3{font-size:23px;line-height:1.45}.reviews-cta>p:not(.eyebrow){margin:16px auto 22px}.reviews-cta-actions{flex-direction:column}.reviews-cta-actions a{width:100%}.reviews-expand-button{width:100%;max-width:380px}.reviews-cta>p:not(.eyebrow){font-size:16px}}
 @media(prefers-reduced-motion:reduce){.customer-reviews *{transition:none!important;animation:none!important;scroll-behavior:auto!important}.customer-reviews [data-review-reveal].review-awaiting{opacity:1;translate:none;transform:none}.customer-reviews .customer-review:hover{transform:none}}
+
+/* Final phone-only refinements; preserve the desktop layout. */
+@media(max-width:700px){
+  .customer-reviews{padding-block-start:49px}
+  .customer-reviews .reviews-heading h2{font-size:27.6px}
+  .customer-reviews .reviews-heading h2 span{display:block}
+  .customer-reviews .reviews-heading .eyebrow{margin-bottom:14px}
+  .customer-reviews .reviews-gold-rule{margin-block:19.25px}
+  .customer-reviews .reviews-heading{margin-bottom:24.5px}
+  .customer-reviews .reviews-trust{gap:9px;margin-bottom:24.5px}
+  .customer-reviews .reviews-bridge{text-wrap:wrap}
+  .customer-reviews .reviews-bridge strong{display:block;margin-top:4px}
+}
