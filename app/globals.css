@@ -578,3 +578,46 @@ section[id]{scroll-margin-top:112px}
 @media(max-width:900px){.about-premium-main{row-gap:22px}.about-intro-heading{grid-column:1;grid-row:1}.about-premium-portrait{grid-column:1;grid-row:2;max-width:234px!important}.about-premium-copy{grid-column:1;grid-row:3}.about-intro-heading h2{font-size:36px}.about-intro-summary{font-size:17px}}
 @media(max-width:560px){.about-premium-main{row-gap:20px}.about-intro-heading h2{font-size:31px;line-height:1.25;margin-bottom:12px}.about-intro-heading .about-kicker{margin-bottom:12px}.about-intro-heading .about-professional-role{margin-bottom:12px;line-height:1.65}.about-intro-summary{font-size:17px;line-height:1.7}.about-premium-portrait{max-width:214px!important}.about-premium-lead{margin-bottom:12px}.about-premium-lead,.about-premium-story{line-height:1.75}.about-premium-benefits{margin:18px 0;padding-top:4px}.about-premium-benefits li{padding:11px 0}.about-premium-benefits p{line-height:1.55}.certificate-placeholder{min-height:90px;margin:12px 12px 0;padding:14px}.certificate-placeholder svg{width:30px;height:30px}.certificate-copy{padding:14px 18px}.certificate-copy h4{margin-bottom:4px}.certificates-grid{gap:14px}}
 @media(prefers-reduced-motion:reduce){.about-intro-heading,.about-premium-portrait,.about-premium-benefits li,.certificate-card{transition:none!important;translate:none!important}.about-premium .about-awaiting{opacity:1;translate:none}}
+
+/* Customer stories: scoped refinement of the existing reviews section. */
+.customer-reviews{padding-block:clamp(56px,7vw,100px);background:#f5f6f8}
+.customer-reviews .reviews-heading{display:flex;flex-direction:column;align-items:center;gap:0;text-align:center;margin:0 auto 40px;max-width:760px}
+.customer-reviews .reviews-heading .eyebrow{color:#80622f;font-size:14px;font-weight:600;letter-spacing:.04em;margin:0 0 16px}
+.customer-reviews .reviews-heading h2{font-size:clamp(32px,4.3vw,60px);line-height:1.25;letter-spacing:-.035em;color:var(--deep);margin:0;text-wrap:balance}
+.customer-reviews .reviews-heading .reviews-subtitle{font:500 clamp(19px,2vw,25px)/1.6 Heebo,sans-serif;color:var(--deep);margin:16px 0 0}
+.reviews-gold-rule{width:44px;height:2px;background:var(--gold);margin:22px 0}
+.customer-reviews .reviews-heading .reviews-intro{font-size:18px;line-height:1.85;color:#536579;max-width:62ch;margin:0}
+.reviews-trust{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:28px;font-size:15px;color:#536579}
+.customer-reviews .review-stars{color:#98743a;font-size:19px;letter-spacing:3px;line-height:1.4;direction:ltr}
+.customer-reviews .reviews-grid{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:22px}
+.customer-reviews .customer-review{min-width:0;padding:28px 30px;background:#fff;border:1px solid #dce3eb;border-radius:14px;box-shadow:0 4px 18px rgb(21 46 67/.035);transition:opacity .4s ease,transform .4s ease,box-shadow .35s ease}
+.customer-reviews .customer-review blockquote{font-size:18px;line-height:1.85;color:#354b60;margin:18px 0 24px;overflow-wrap:anywhere}
+.customer-reviews .customer-review figcaption{padding-top:18px;gap:12px;margin-top:0}
+.customer-reviews .review-avatar{width:40px;height:40px;background:#eff2f6;color:var(--deep);font-size:17px}
+.customer-reviews .customer-review strong{font-size:15px;color:var(--deep)}
+.customer-reviews .customer-review small{display:flex;align-items:center;gap:6px;margin-top:5px;font-size:12px;color:#586b7e}
+.review-google-mark{width:14px;height:14px;flex:none}
+.reviews-expand-controls{text-align:center;margin:30px auto 0}
+.reviews-expand-button,.reviews-collapse-bottom{font:500 15px/1.6 Heebo,sans-serif;cursor:pointer;color:var(--deep);background:transparent}
+.reviews-expand-button{min-height:50px;display:inline-flex;align-items:center;justify-content:center;gap:22px;padding:12px 26px;border:1px solid var(--deep);border-radius:8px;transition:background .35s ease,transform .35s ease}
+.reviews-expand-button span{font-size:21px}
+.reviews-expansion{display:grid;grid-template-rows:0fr;visibility:hidden;opacity:0;max-width:1180px;margin-inline:auto;transition:grid-template-rows .4s ease,opacity .4s ease,visibility .4s}
+.reviews-expansion.is-expanded{grid-template-rows:1fr;visibility:visible;opacity:1}
+.reviews-expansion-inner{overflow:hidden;min-height:0}
+.reviews-expansion .reviews-grid{padding-top:22px;padding-bottom:5px}
+.reviews-collapse-bottom{display:block;margin:20px auto 0;min-height:48px;border:0;text-decoration:underline;text-underline-offset:5px}
+.reviews-cta{max-width:1180px;margin:56px auto 0;background:var(--deep);color:#fff;text-align:center;padding:clamp(32px,5vw,60px);border-radius:16px;position:relative;overflow:hidden}
+.reviews-cta::before{content:"";position:absolute;top:0;inset-inline:calc(50% - 25px);height:3px;background:var(--gold)}
+.reviews-cta .eyebrow{color:#d4b57f;margin:0 0 15px}
+.reviews-cta h3{font:600 clamp(24px,2.7vw,36px)/1.45 Heebo,sans-serif;letter-spacing:-.025em;margin:0;text-wrap:balance}
+.reviews-cta>p:not(.eyebrow){font-size:17px;line-height:1.85;color:#d4dfe9;max-width:68ch;margin:20px auto 28px}
+.reviews-cta-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.reviews-cta-actions a{min-height:54px;display:flex;align-items:center;justify-content:center;gap:18px;padding:12px 24px;border-radius:8px;font:500 15px/1.6 Heebo,sans-serif;text-decoration:none;transition:transform .35s ease,background .35s ease;box-sizing:border-box}
+.reviews-book{background:var(--gold);color:var(--deep);border:1px solid var(--gold)}
+.reviews-whatsapp{color:#fff;border:1px solid #91a2b2;background:transparent}
+.customer-reviews :is(a,button):focus-visible{outline:3px solid #b38b48;outline-offset:5px}
+.customer-reviews :is(a,button):active{transform:translateY(1px)}
+@media(hover:hover) and (pointer:fine){.customer-reviews .customer-review:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgb(21 46 67/.09)}.reviews-expand-button:hover{background:#e7ecf1}.reviews-book:hover{background:#dfc393}.reviews-whatsapp:hover{background:#28465e}}
+.customer-reviews .customer-review.review-awaiting{opacity:0;transform:translateY(14px)}
+@media(max-width:700px){.customer-reviews .reviews-grid{grid-template-columns:minmax(0,1fr);gap:16px}.customer-reviews .reviews-heading{margin-bottom:28px}.customer-reviews .reviews-heading .reviews-intro{font-size:16px;line-height:1.8}.customer-reviews .customer-review{padding:22px}.customer-reviews .customer-review blockquote{font-size:17px;line-height:1.8;margin:14px 0 18px}.customer-reviews .customer-review figcaption{padding-top:14px}.reviews-trust{font-size:14px;gap:10px;margin-top:22px}.reviews-cta{margin-top:36px;padding:32px 22px}.reviews-cta-actions{flex-direction:column}.reviews-cta-actions a{width:100%}.reviews-expand-button{width:100%;max-width:380px}.reviews-cta>p:not(.eyebrow){font-size:16px}}
+@media(prefers-reduced-motion:reduce){.customer-reviews *{transition:none!important;animation:none!important;scroll-behavior:auto!important}.customer-reviews .customer-review.review-awaiting{opacity:1;transform:none}.customer-reviews .customer-review:hover{transform:none}}
