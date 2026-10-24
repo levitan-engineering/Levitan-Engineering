@@ -1,8 +1,9 @@
+import AboutSection from "./about-section";
+import { BUSINESS, NEW_APARTMENT_PATH, whatsappLink } from "../lib/business";
 import Reviews from "./reviews";
-import InspectionFinder from "./inspection-finder";
 
 const services = [
-  ["בדק בית — דירה חדשה", "בדיקת מסירה לפני קבלת המפתח: רטיבות, ריצוף, אינסטלציה, חשמל ואלומיניום."],
+  ["בדק בית — דירה חדשה מקבלן", "בדיקת מסירה לפני קבלת המפתח: רטיבות, ריצוף, אינסטלציה, חשמל ואלומיניום."],
   ["בדיקת דירה — יד שנייה", "תמונת מצב כנה על נכס קיים לפני רכישה: ליקויים נסתרים, בלאי וסדקים."],
   ["חוות דעת הנדסית", "מסמך כתוב, מנומק ומגובה תקנים — מול הקבלן, המוכר ובמידת הצורך גם בהליך משפטי."],
 ];
@@ -21,13 +22,13 @@ export default function Home() {
           <img className="header-brand-logo" src="/assets/img/logo-transparent.png" width="1556" height="1332" alt="" /><span className="brand-copy"><span className="brand-tagline">בדק בית | איכות הבנייה</span></span>
         </a>
         <nav aria-label="ניווט ראשי">
-          <a href="#services">שירותים</a>
+          <a href="/services/">שירותים</a>
           <a href="#check">מה נבדק</a>
           <a href="#about">אודות</a>
           <a href="#reviews">המלצות</a>
           <a href="#contact">יצירת קשר</a>
         </nav>
-        <details className="mobile-nav"><summary aria-label="פתיחת תפריט ניווט"><span aria-hidden="true">☰</span></summary><nav aria-label="תפריט נייד"><a href="#top">ראשי</a><a href="#services">שירותים</a><a href="#about">אודות</a><a href="#reviews">המלצות</a><a href="#contact">יצירת קשר</a></nav></details>
+        <details className="mobile-nav"><summary aria-label="פתיחת תפריט ניווט"><span aria-hidden="true">☰</span></summary><nav aria-label="תפריט נייד"><a href="#top">ראשי</a><a href="/services/">שירותים</a><a href="#about">אודות</a><a href="#reviews">המלצות</a><a href="#contact">יצירת קשר</a></nav></details>
       </header>
 
       <section className="hero" id="top">
@@ -36,8 +37,8 @@ export default function Home() {
           <h1>הבית שלכם.<br /><em>האחריות שלנו.</em></h1>
           <p className="hero-lead hero-service-line"><span>בדק בית מקצועי</span><span aria-hidden="true">|</span><span>איתור ליקויי בנייה</span><span aria-hidden="true">|</span><span>חוות דעת הנדסית</span></p>
           <div className="hero-actions">
-            <a className="primary" href="https://wa.me/972556625745" target="_blank" rel="noreferrer">לתיאום בדיקה <span>←</span></a>
-            <a className="phone" href="tel:+972556625745">055‑662‑5745</a>
+            <a className="primary" href={whatsappLink()} target="_blank" rel="noreferrer">לתיאום בדיקה <span>←</span></a>
+            <a className="phone" href={`tel:${BUSINESS.telephone}`}>055‑662‑5745</a>
           </div>
           <a className="proof hero-reviews-link" href="#reviews"><span aria-hidden="true">★</span><span>לקוחות מספרים</span><span className="reviews-link-arrow" aria-hidden="true">←</span></a>
         </div>
@@ -52,26 +53,16 @@ export default function Home() {
       </section>
 
 
-      <section className="services section" id="services">
-        <div className="section-head"><p className="eyebrow">בודקים. מתעדים. מסבירים.</p><h2>השירותים שלנו</h2></div>
-        <div className="service-list">
-          {services.map(([title, copy], index) => <article className="service" key={title}><span className="service-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">{index === 0 ? <><path d="M4 15 16 4l12 11M7 13v15h18V13M13 28V18h6v10" /></> : index === 1 ? <><rect x="7" y="6" width="19" height="23" rx="2"/><path d="M12 6V3h9v3M12 15l3 3 6-6M12 24h9"/></> : <><path d="M8 3h12l6 6v20H8zM20 3v7h6M12 19l3 3 6-6"/></>}</svg></span><h3>{title}</h3><p>{copy}</p><a href="#finder" aria-label={`בחירת ${title}`}>←</a></article>)}
-        </div>
+      <section className="home-services-bridge" id="services" aria-labelledby="home-services-title">
+        <span id="check" className="services-anchor" aria-hidden="true" />
+        <span id="finder" className="services-anchor" aria-hidden="true" />
+        <p className="eyebrow">השירותים שלנו</p>
+        <h2 id="home-services-title">בדיקות הנדסיות בהתאמה לנכס שלכם</h2>
+        <p>מדירה חדשה מקבלן ועד בדיקת שטחים משותפים – הכירו את השירותים המקצועיים של לוויתן הנדסה.</p>
+        <a className="journey-primary" href="/services/">לכל השירותים <span aria-hidden="true">←</span></a>
       </section>
 
-      <InspectionFinder />
-
-      <section className="checks section" id="check">
-        <div className="section-head"><p className="eyebrow">מה נבדק</p><h2>כל ממצא מקבל<br /><em>מקום בדוח.</em></h2></div>
-        <div className="check-grid">
-          {checks.map(([image, title, label]) => <a className="check-card" href="#finder" key={title}><div className="check-image"><img src={`/${image}`} width="1200" height="1500" alt="" /><span>{label}</span></div><h3>{title}</h3><p>הסבר ברור, תיעוד מצולם והמלצות להמשך טיפול.</p></a>)}
-        </div>
-      </section>
-
-      <section className="about section" id="about">
-        <div className="about-image"><img src="/assets/img/about.jpg" width="1200" height="1500" alt="ידידיה לויתן" /></div>
-        <div className="about-copy"><p className="eyebrow">מי בודק את הנכס</p><h2>נעים להכיר,<br /><em>ידידיה לויתן.</em></h2><p>שמי ידידיה לויתן, הנדסאי בניין ומנהל פרויקטים, עם ניסיון בפיקוח, בקרת איכות ובדיקות מבנים.</p><p>המטרה שלי ברורה: להגן על האינטרסים שלכם, לאתר ליקויים בזמן ולספק דוח מקצועי שיחסוך עלויות ותקלות בעתיד.</p><div className="signature"><strong>ידידיה לויתן</strong><span>הנדסאי בניין ומנהל פרויקטים</span></div></div>
-      </section>
+      <AboutSection />
 
       <Reviews />
 
@@ -142,7 +133,7 @@ export default function Home() {
         <p className="insights-note">התוכן נכתב לצורכי מידע כללי ואינו מהווה ייעוץ משפטי או תחליף לבדיקה של הנכס המסוים.</p>
       </section>
 
-      <section className="contact section" id="contact"><div><p className="eyebrow">השלב הבא</p><h2>נכס לפני רכישה<br /><em>לא בודקים לבד.</em></h2></div><div className="contact-panel"><h3>רוצים לתאם בדיקה?</h3><p>כתבו ב־WhatsApp וקבלו מענה ישיר מידידיה.</p><a className="primary" href="https://wa.me/972556625745" target="_blank" rel="noreferrer">תיאום בדיקה ב־WhatsApp <span>↙</span></a><a className="contact-phone" href="tel:+972556625745">055‑662‑5745</a></div></section>
+      <section className="contact section" id="contact"><div><p className="eyebrow">השלב הבא</p><h2>נכס לפני רכישה<br /><em>לא בודקים לבד.</em></h2></div><div className="contact-panel"><h3>רוצים לתאם בדיקה?</h3><p>כתבו ב־WhatsApp וקבלו מענה ישיר מידידיה.</p><a className="primary" href={whatsappLink()} target="_blank" rel="noreferrer">תיאום בדיקה ב־WhatsApp <span>↙</span></a><a className="contact-phone" href={`tel:${BUSINESS.telephone}`}>055‑662‑5745</a></div></section>
 
       <footer className="site-footer" id="footer">
         <div className="footer-cta">
@@ -150,7 +141,7 @@ export default function Home() {
             <p className="footer-kicker">לפני שמתקדמים עם הנכס</p>
             <h2>מקבלים תמונה הנדסית ברורה.</h2>
           </div>
-          <a href="https://wa.me/972556625745" target="_blank" rel="noreferrer">
+          <a href={whatsappLink()} target="_blank" rel="noreferrer">
             תיאום בדיקה ב־WhatsApp <span>↙</span>
           </a>
         </div>
@@ -163,7 +154,7 @@ export default function Home() {
 
           <div className="footer-column">
             <h3>ניווט</h3>
-            <a href="#services">שירותים</a>
+            <a href="/services/">שירותים</a>
             <a href="#check">מה נבדק</a>
             <a href="#about">אודות</a>
           <a href="#reviews">המלצות</a>
@@ -172,15 +163,16 @@ export default function Home() {
 
           <div className="footer-column">
             <h3>שירותים</h3>
-            <a href="#finder">בדק בית לדירה חדשה</a>
-            <a href="#finder">בדיקת דירה יד שנייה</a>
-            <a href="#finder">חוות דעת הנדסית</a>
+            <a href={NEW_APARTMENT_PATH}>בדק בית לדירה חדשה</a>
+            <a href="/services/#used-apartment">בדיקת דירה יד שנייה</a>
+            <a href="/services/#engineering-opinion">חוות דעת הנדסית</a>
+            <a href="/services/#shared-areas">בדיקת שטחים משותפים</a>
           </div>
 
           <div className="footer-column footer-contact">
             <h3>מדברים ישירות</h3>
-            <a className="footer-phone" href="tel:+972556625745">055‑662‑5745</a>
-            <a href="mailto:levitanengineering@gmail.com">levitanengineering@gmail.com</a>
+            <a className="footer-phone" href={`tel:${BUSINESS.telephone}`}>055‑662‑5745</a>
+            <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>
             <p>מרכז · שפלה · ירושלים</p>
             <span>מענה אישי מידידיה לויתן</span>
           </div>

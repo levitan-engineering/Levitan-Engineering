@@ -1,0 +1,90 @@
+"use client";
+import { useEffect, useRef, useState } from "react";
+import ServiceIntro from "./services/new-apartment/service-intro";
+import InspectionJourney from "./services/new-apartment/inspection-journey";
+import { BUSINESS, whatsappLink } from "../lib/business";
+import { normalizePhone } from "../lib/inspection";
+
+const services = [
+  { id: "new-apartment", title: "בדק בית – דירה חדשה מקבלן", description: "בדיקה הנדסית מקיפה לאיתור ליקויי בנייה, גמר ומערכות לפני קבלת הדירה, כדי שתדעו מה מצב הנכס לפני הכניסה.", action: "להתאמת הבדיקה" },
+  { id: "used-apartment", title: "בדיקת דירה – יד שנייה", description: "בדיקה מקצועית של מצב הנכס לפני רכישה, לזיהוי ליקויים, סימני רטיבות ובלאי שעשויים להשפיע על החלטת הקנייה.", action: "לפרטי השירות" },
+  { id: "engineering-opinion", title: "חוות דעת הנדסית", description: "מסמך מקצועי, מנומק ומתועד שמרכז את הממצאים בנכס ומסייע להבין אותם ולהציגם בפני הגורמים הרלוונטיים.", action: "לפרטי השירות" },
+  { id: "shared-areas", title: "בדיקת שטחים משותפים", description: "בדיקה הנדסית של השטחים והמערכות המשותפות בבניין, לאיתור ליקויי בנייה וגמר.", action: "לפרטי השירות" },
+];
+function Icon({ index = 0 }: { index?: number }) { return <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{index === 0 ? <path d="M4 15 16 4l12 11M7 13v15h18V13M13 28V18h6v10" /> : index === 1 ? <><rect x="7" y="6" width="19" height="23" rx="2"/><path d="M12 6V3h9v3M12 15l3 3 6-6M12 24h9"/></> : index === 2 ? <><path d="M8 3h12l6 6v20H8zM20 3v7h6M12 19l3 3 6-6"/></> : <><path d="M7 29V4h15v25M22 14h5v15M4 29h25M13 29v-5h4v5M11 9h1m5 0h1m-7 5h1m5 0h1m-7 5h1m5 0h1"/></>}</svg>; }
+export default function ServicesSection({ standalone = false }: { standalone?: boolean }) {
+  const Heading = standalone ? "h1" : "h2";
+  const [active, setActive] = useState<string | null>(null);
+  const [showContact, setShowContact] = useState(false);
+  const [contact, setContact] = useState({ name: "", phone: "", service: "", consent: false });
+  const [errors, setErrors] = useState<Record<string,string>>({});
+  const [opened, setOpened] = useState(false);
+  const root = useRef<HTMLElement>(null);
+  const contactHeading = useRef<HTMLHeadingElement>(null);
+  useEffect(() => {
+    const cards = root.current?.querySelectorAll<HTMLElement>(".services-premium-card");
+    if (!cards || !('IntersectionObserver' in window)) return;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) return;
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.remove('awaiting-reveal'); observer.unobserve(entry.target); } }), { threshold: .12 });
+    cards.forEach(card => { card.classList.add('awaiting-reveal'); observer.observe(card); });
+    return () => observer.disconnect();
+  }, []);
+  useEffect(() => {
+    function readHash() {
+      const id = window.location.hash.slice(1);
+      if (services.some(s => s.id === id)) setActive(id);
+    }
+    readHash(); window.addEventListener('hashchange',readHash);
+    return () => window.removeEventListener('hashchange',readHash);
+  }, []);
+  useEffect(() => {
+    const element = root.current;
+    if (!element || !("IntersectionObserver" in window)) return;
+    const links = document.querySelectorAll<HTMLAnchorElement>('.site-header a[href="#services"], .site-header a[href="/#services"], .site-header a[href="/services/"]');
+    const observer = new IntersectionObserver(entries => { const visible = entries[0]?.isIntersecting; links.forEach(link => { if (visible) link.setAttribute("aria-current", "location"); else link.removeAttribute("aria-current"); }); }, { rootMargin: "-84px 0px -35% 0px", threshold: 0 });
+    observer.observe(element);
+    return () => { observer.disconnect(); links.forEach(link => link.removeAttribute("aria-current")); };
+  }, []);
+  useEffect(() => {
+    function updateHeader() { document.documentElement.classList.toggle("page-scrolled", window.scrollY > 90); }
+    updateHeader(); window.addEventListener("scroll", updateHeader, { passive: true });
+    return () => { window.removeEventListener("scroll", updateHeader); document.documentElement.classList.remove("page-scrolled"); };
+  }, []);
+  function select(id: string) {
+    setActive(id);
+    requestAnimationFrame(() => {
+      const panel = document.getElementById(`service-panel-${id}`);
+      panel?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start' });
+      panel?.focus({preventScroll:true});
+    });
+  }
+  function sendContact(e: React.FormEvent) {
+    e.preventDefault();
+    const next: Record<string,string> = {};
+    if (!contact.name.trim()) next.name = "הזינו שם מלא.";
+    if (!/^0(?:5\d{8}|[23489]\d{7}|7\d{8})$/.test(normalizePhone(contact.phone))) next.phone = "הזינו מספר טלפון ישראלי תקין.";
+    if (!contact.consent) next.consent = "נדרש אישור לשימוש בפרטים לצורך טיפול בפנייה.";
+    setErrors(next); if(Object.keys(next).length) return;
+    const message = `שלום, הגעתי מעמוד השירותים באתר לויתן הנדסה ואשמח להתייעץ לגבי בדיקה לנכס.\n\nשם: ${contact.name.trim()}\nטלפון: ${normalizePhone(contact.phone)}${contact.service ? `\nשירות מבוקש: ${contact.service}` : ""}`;
+    window.open(whatsappLink(message),'_blank','noopener,noreferrer'); setOpened(true);
+  }
+  function openContact() { setShowContact(true); requestAnimationFrame(() => {contactHeading.current?.focus({preventScroll:true}); contactHeading.current?.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});}); }
+  return <section ref={root} className="services-premium" id="services" aria-labelledby="services-heading">
+    <span id="finder" className="services-anchor" aria-hidden="true" />
+    <header className="services-premium-heading"><p>לויתן הנדסה | מומחיות בבדיקות מבנים</p><Heading id="services-heading">השירותים שלנו</Heading><span className="services-gold-rule" aria-hidden="true"/><p className="services-premium-lead">בדיקות הנדסיות מקצועיות לאיתור ליקויי בנייה, הערכת מצב הנכס וקבלת החלטות בביטחון.</p></header>
+    <div className="services-premium-grid">{services.map((service,index) => <article className={`services-premium-card ${active===service.id?'is-active':''}`} key={service.id}>
+      <div className="services-card-top"><span className="services-card-icon"><Icon index={index}/></span><span className="services-card-number">0{index+1}</span></div>
+      <h3>{service.title}</h3><p>{service.description}</p><button type="button" className="services-card-action" aria-expanded={active===service.id} aria-controls={`service-panel-${service.id}`} onClick={() => select(service.id)}>{service.action}<span aria-hidden="true">←</span></button>
+    </article>)}</div>
+    <div id="new-apartment" className="services-anchor" />
+    <div id="shared-areas" className="services-anchor" />
+    <div id="used-apartment" className="services-anchor" />
+    <div id="engineering-opinion" className="services-anchor" />
+    <div id="service-panel-new-apartment" tabIndex={-1} hidden={active!=="new-apartment"} className="new-apartment-page inline-apartment-service service-expanded-panel"><div className="service-expanded-bar"><span>01 / דירה חדשה מקבלן</span><button type="button" onClick={()=>{setActive(null);document.getElementById('services-heading')?.scrollIntoView({block:'start'});}}>סגירת הפרטים ×</button></div><ServiceIntro embedded/><InspectionJourney/></div>
+    {services.slice(1).map((service,index) => <div key={service.id} id={`service-panel-${service.id}`} tabIndex={-1} hidden={active!==service.id} className="service-detail-panel service-expanded-panel"><p className="eyebrow">0{index+2} / פרטי השירות</p><h3>{service.title}</h3><p>{service.description}</p><p>{index===0 ? "הבדיקה מספקת תמונת מצב של נכס קיים לפני רכישה. בשיחה נברר את סוג הנכס, מיקומו ומועד הרכישה, ונתאים את היקף הבדיקה." : index===1 ? "בשיחה נברר את השאלה המקצועית, פרטי הנכס והמסמכים הקיימים, כדי להתאים את היקף חוות הדעת לצורך שלכם." : "בשיחה נברר את פרטי הבניין והשטחים המשותפים שברצונכם לבדוק, ונתאים את היקף הבדיקה לצורך שלכם."}</p><a className="journey-primary" href={whatsappLink(`שלום, הגעתי מאתר לויתן הנדסה ואשמח לקבל פרטים על ${service.title}.`)} target="_blank" rel="noreferrer">התייעצות לגבי השירות <span aria-hidden="true">←</span></a><button type="button" className="journey-back" onClick={()=>setActive(null)}>סגירת הפרטים</button></div>)}
+    <section className="services-trust" aria-labelledby="services-trust-title"><h3 id="services-trust-title">למה לבחור בלויתן הנדסה?</h3><p>בדיקה מקצועית, הסברים ברורים וליווי אישי בתהליך בדיקת הנכס.</p><ul>{[["בדיקה יסודית","בחינה מקצועית של הנכס בהתאם לסוג הבדיקה ולהיקף השירות."],["דוח ברור ומפורט","ממצאים מסודרים שמסייעים להבין את מצב הנכס ואת הליקויים שאותרו."],["ליווי אישי","מענה והסברים לאורך תהליך הבדיקה."]].map(([title,text],index)=><li key={title}><Icon index={index}/><div><strong>{title}</strong><p>{text}</p></div></li>)}</ul></section>
+    <section className="services-consult" aria-labelledby="services-consult-title"><div><h3 id="services-consult-title">לא בטוחים איזו בדיקה מתאימה לכם?</h3><p>ספרו לנו על הנכס שלכם ונעזור לכם לבחור את השירות המתאים.</p></div><div className="services-consult-actions"><a href={whatsappLink("שלום, הגעתי מעמוד השירותים באתר לויתן הנדסה ואשמח להתייעץ לגבי בדיקה לנכס.")} target="_blank" rel="noreferrer"><svg className="consult-whatsapp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M20.5 11.6a8.5 8.5 0 0 1-12.7 7.3L3 20l1.2-4.6a8.5 8.5 0 1 1 16.3-3.8Z"/><path d="M8.2 7.5c-.4 0-.9.7-.9 1.4 0 2.8 4 6.5 6.7 6.5.8 0 1.6-.6 1.7-1.2l-2.2-1.1-.9.8c-1.3-.6-2.6-1.8-3.1-3l.7-.9-1-2.5h-1Z"/></svg>התייעצות ב-WhatsApp <span aria-hidden="true">←</span></a><button type="button" aria-expanded={showContact} aria-controls="services-contact-form" onClick={openContact}>השארת פרטים</button></div></section>
+    <div id="services-contact-form" hidden={!showContact} className="services-short-form"><h3 ref={contactHeading} tabIndex={-1}>איך אפשר לחזור אליכם?</h3><p>מלאו פרטים ונכין עבורכם הודעת WhatsApp. שליחת טופס ישירות לדוא״ל תופעל לאחר השלמת החיבור.</p><form noValidate onSubmit={sendContact}><div className="journey-field"><label htmlFor="consult-name">שם מלא (חובה)</label><input id="consult-name" required maxLength={100} autoComplete="name" value={contact.name} onChange={e=>{setContact({...contact,name:e.target.value});setOpened(false);}} aria-invalid={!!errors.name} aria-describedby={errors.name?'consult-name-error':undefined}/>{errors.name&&<small id="consult-name-error" role="alert" className="journey-error">{errors.name}</small>}</div><div className="journey-field"><label htmlFor="consult-phone">טלפון (חובה)</label><input id="consult-phone" type="tel" inputMode="tel" dir="ltr" required maxLength={24} autoComplete="tel" value={contact.phone} onChange={e=>{setContact({...contact,phone:e.target.value});setOpened(false);}} aria-invalid={!!errors.phone} aria-describedby={errors.phone?'consult-phone-error':undefined}/>{errors.phone&&<small id="consult-phone-error" role="alert" className="journey-error">{errors.phone}</small>}</div><div className="journey-field"><label htmlFor="consult-service">סוג השירות (רשות)</label><select id="consult-service" value={contact.service} onChange={e=>{setContact({...contact,service:e.target.value});setOpened(false);}}><option value="">עדיין לא בטוחים</option>{services.map(s=><option key={s.id}>{s.title}</option>)}</select></div><label className="journey-consent"><input type="checkbox" checked={contact.consent} onChange={e=>setContact({...contact,consent:e.target.checked})}/><span>אני מאשר/ת שימוש בפרטים לצורך טיפול בפנייה, בהתאם ל<a href="/privacy/" target="_blank" rel="noreferrer">מדיניות הפרטיות</a>.</span></label>{errors.consent&&<p role="alert" className="journey-error">{errors.consent}</p>}<button type="submit" className="journey-primary">המשך לשליחה ב-WhatsApp <span aria-hidden="true">←</span></button><p className="journey-note" aria-live="polite">{opened?'ההודעה מוכנה. יש ללחוץ על שליחה בתוך WhatsApp כדי להעביר אותה לעסק.':'הפרטים אינם נשלחים עד שתלחצו על שליחה ב־WhatsApp.'}</p></form></div>
+  </section>;
+}

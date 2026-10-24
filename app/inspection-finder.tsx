@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { NEW_APARTMENT_PATH, whatsappLink } from "../lib/business";
 
 const choices = [
   { id: "new", label: "דירה חדשה מקבלן", copy: "לפני קבלת המפתח" },
@@ -42,8 +43,8 @@ export default function InspectionFinder() {
       </div>
       <a
         className="finder-action"
-        href={`https://wa.me/972556625745?text=${encodeURIComponent(message)}`}
-        target="_blank"
+        href={selected === "new" ? NEW_APARTMENT_PATH : whatsappLink(message)}
+        target={selected === "new" ? undefined : "_blank"}
         rel="noreferrer"
       >
         {selectedChoice ? `לתיאום ${selectedChoice.label}` : "בחרו סוג בדיקה כדי להתחיל"}
