@@ -1,6 +1,13 @@
 import AboutSection from "./about-section";
 import { BUSINESS, NEW_APARTMENT_PATH, whatsappLink } from "../lib/business";
 import Reviews from "./reviews";
+import BuyerGuide from "./buyer-guide";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "לויתן הנדסה | בדק בית והמדריך לרוכשי דירה",
+  description: "בדק בית מקצועי וליווי אישי של לוויתן הנדסה. מדריך לרוכשי דירה חדשה: מה בודקים, מתי מזמינים בדיקה ואיך מתעדים ליקויים מול הקבלן.",
+};
 
 const services = [
   ["בדק בית — דירה חדשה מקבלן", "בדיקת מסירה לפני קבלת המפתח: רטיבות, ריצוף, אינסטלציה, חשמל ואלומיניום."],
@@ -66,72 +73,7 @@ export default function Home() {
 
       <Reviews />
 
-      <section className="insights section" id="insights" aria-labelledby="insights-title">
-        <div className="insights-heading">
-          <p className="eyebrow">המדריך לרוכשי דירה</p>
-          <h2 id="insights-title">לפני שמקבלים מפתח,<br /><em>מבינים מה מקבלים.</em></h2>
-          <p>מדריכים ומחקר מקצועי שיעזרו לכם להבין למה הבדיקה חשובה, מה היא כוללת ואיך משתמשים בממצאים.</p>
-        </div>
-        <div className="insights-grid">
-          <article className="insight-card">
-            <div className="insight-meta"><span>01</span><span>לפני המסירה</span></div>
-            <h3>דירה חדשה לא תמיד מגיעה ללא ליקויים</h3>
-            <p>גם בפרויקט חדש מעורבים בעלי מקצוע וקבלני משנה רבים. סטייה קטנה בשיפוע, באיטום או בחיבור מערכת עלולה להפוך אחרי הכניסה לרטיבות, בלאי או תיקון יקר.</p>
-            <details>
-              <summary>לקריאת הכתבה <span>＋</span></summary>
-              <div className="article-body">
-                <p>המראה החדש של הדירה יכול להסתיר פרטים שקשה לזהות ללא ניסיון וציוד מתאים. הבדיקה אינה מחפשת רק פגם אסתטי; היא בוחנת אם הביצוע תואם את התוכניות, המפרט והדרישות הרלוונטיות.</p>
-                <p>המועד הנכון לבדיקה הוא כאשר העבודות הסתיימו והמערכות פעילות, סמוך למסירה ולפני הכנסת ריהוט. כך ניתן לתעד את מצב הדירה בצורה מסודרת ולהעביר לקבלן רשימת ממצאים ברורה.</p>
-                <strong>המטרה: להיכנס לדירה כשאתם יודעים מה תקין, מה דורש תיקון ומה חשוב להמשיך לעקוב אחריו.</strong>
-              </div>
-            </details>
-          </article>
-
-          <article className="insight-card">
-            <div className="insight-meta"><span>02</span><span>מה בודקים</span></div>
-            <h3>מהנדס רואה דברים שרוכש רגיל עלול לפספס</h3>
-            <p>בדיקה מקצועית מחברת בין העין, המכשור והידע בתקנים: מרטיבות ואיטום ועד ריצוף, פתחים, חשמל, אינסטלציה ורכיבי בטיחות.</p>
-            <details>
-              <summary>לקריאת הכתבה <span>＋</span></summary>
-              <div className="article-body">
-                <p>במהלך הבדיקה עוברים באופן שיטתי על חללי הדירה והמערכות הנגישות. בודקים סימני רטיבות, שיפועים וניקוז, איכות גמר, סדקים, דלתות וחלונות, כלים סניטריים ונקודות חשמל.</p>
-                <p>לא כל ליקוי נראה מיד ולא כל סימן מעיד על בעיה חמורה. הערך של הבודק הוא ביכולת להבדיל בין תיקון נקודתי לבין ממצא שדורש בירור נוסף, ולתעד את המיקום והמשמעות בצורה שהלקוח יכול להבין.</p>
-                <strong>המטרה: להפוך דירה שלמה לרשימה מסודרת של עובדות, סדרי עדיפויות והמלצות.</strong>
-              </div>
-            </details>
-          </article>
-
-          <article className="insight-card">
-            <div className="insight-meta"><span>03</span><span>מול הקבלן</span></div>
-            <h3>דוח מסודר נותן לכם בסיס אמיתי לדרוש תיקון</h3>
-            <p>אמירה כללית כמו “יש בעיה בקיר” קשה לקדם. דוח עם מיקום, צילום והסבר מקצועי מאפשר לפנות לקבלן בצורה ממוקדת ולעקוב אחר הטיפול.</p>
-            <details>
-              <summary>לקריאת הכתבה <span>＋</span></summary>
-              <div className="article-body">
-                <p>חוק המכר מבחין בין תקופות בדק ואחריות המשתנות לפי סוג הליקוי. לכן יש ערך לתיעוד מוקדם: הוא יוצר תמונת מצב מתוארכת של הדירה ומרכז את הנושאים שדורשים התייחסות.</p>
-                <p>לאחר קבלת הדוח אפשר להעביר לקבלן פנייה מסודרת, לשמור את ההתכתבויות ולוודא שכל סעיף מקבל מענה. במקרה הצורך, הדוח הטכני יכול לסייע לאנשי מקצוע נוספים להבין את המצב.</p>
-                <strong>המטרה: לנהל את התיקונים על בסיס מידע מקצועי ולא על בסיס תחושה או זיכרון.</strong>
-              </div>
-            </details>
-          </article>
-        </div>
-        <a className="press-feature" href="https://www.themarker.com/realestate/2014-02-13/ty-article/0000017f-dc45-db5a-a57f-dc6f4ee60000" target="_blank" rel="noreferrer" aria-label="קריאת הכתבה המלאה באתר TheMarker">
-          <div className="press-copy">
-            <div className="press-source"><span>THEMARKER</span><span>נדל״ן</span></div>
-            <p className="press-label">כתבה ב־TheMarker</p>
-            <h3>חוקרים בטכניון: ב-100% מהדירות החדשות בישראל יש ליקויי בנייה</h3>
-            <p>חוקרים בטכניון גילו את מה שרוכשי הדירות יודעים כבר שנים - הבנייה בישראל נעשית ברמה נמוכה, על ידי עובדים שלא עברו הכשרה ומפוקחת על ידי מפקחים לא מקצועיים, שלחלקם אין אינטרס לחשוף ליקויים</p>
-            <p className="press-meta">רז סמולסקי · 13.02.2014 · TheMarker</p>
-          </div>
-          <div className="press-action">
-            <blockquote>״ככל שהליקוי נחשף בשלב מאוחר יותר — עלות תיקונו גבוהה יותר״</blockquote>
-            <span className="press-link">
-              לכתבה המלאה ב־TheMarker <span>↗</span>
-            </span>
-          </div>
-        </a>
-        <p className="insights-note">התוכן נכתב לצורכי מידע כללי ואינו מהווה ייעוץ משפטי או תחליף לבדיקה של הנכס המסוים.</p>
-      </section>
+      <BuyerGuide />
 
       <section className="contact section" id="contact"><div><p className="eyebrow">השלב הבא</p><h2>נכס לפני רכישה<br /><em>לא בודקים לבד.</em></h2></div><div className="contact-panel"><h3>רוצים לתאם בדיקה?</h3><p>כתבו ב־WhatsApp וקבלו מענה ישיר מידידיה.</p><a className="primary" href={whatsappLink()} target="_blank" rel="noreferrer">תיאום בדיקה ב־WhatsApp <span>↙</span></a><a className="contact-phone" href={`tel:${BUSINESS.telephone}`}>055‑662‑5745</a></div></section>
 
