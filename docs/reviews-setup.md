@@ -22,3 +22,6 @@ Run frontend check: pnpm build
 Moderation removal is a reversible soft removal with an audit trail. Personal-data erasure, when requested, must be handled by the owner in the database, including relevant audit references. Back up the database using the provider's available export tools; no paid backup feature is authorized.
 
 Any future Google review display must use an authorized Google API or approved integration under Google's terms, with proper attribution. It is deliberately outside this implementation; no scraping, paid widget or automatic cross-posting exists.
+
+## Deferred activation — owner decision
+Server, database and Google API integration are postponed until the owner approves the completed website. Keep public configuration empty until then. The submission button is hidden unless both the review endpoint and CAPTCHA site key are configured; the Google button is hidden without a valid owner-provided review URL. No placeholder button or coming-soon dialog is exposed on the unconfigured public page. The form and moderation source remain prepared for later activation. Never display a success message without a confirmed database save.

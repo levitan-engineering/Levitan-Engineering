@@ -72,11 +72,12 @@ export default function ReviewSubmission() {
     } catch (e) { setError(e instanceof Error && e.message !== "Failed to fetch" ? e.message : "ההמלצה לא נשמרה. בדקו את החיבור ונסו שוב."); setCaptcha(""); if (widgetId.current) window.turnstile?.reset(widgetId.current); }
     finally { setSending(false); }
   }
+  if (!configured && !googleReviewUrl() && items.length === 0) return null;
   return <div className="review-additions">
     {items.length > 0 && <section className="review-site-list" aria-labelledby="site-review-title"><h3 id="site-review-title">המלצות שנכתבו באתר</h3><div className="reviews-grid">{items.map(review => <figure className="customer-review" key={review.id}><span className="review-stars" role="img" aria-label={`${review.rating} מתוך 5 כוכבים`}>{"★".repeat(review.rating)}{"☆".repeat(5 - review.rating)}</span><blockquote>{review.quote}</blockquote><figcaption><span className="review-avatar" aria-hidden="true">{Array.from(review.name)[0]}</span><span className="review-customer"><strong dir="auto">{review.name}</strong><small>המלצה שנכתבה באתר</small></span></figcaption></figure>)}</div></section>}
     {listError && <p role="status">{listError}<button className="review-new-secondary" onClick={() => void loadReviews(items.length)}>ניסיון נוסף</button></p>}
     {more && <button className="review-new-secondary" onClick={() => void loadReviews(items.length)} disabled={loading}>{loading ? "טוענים…" : "להמלצות נוספות מהאתר"}</button>}
-    <div className="review-writing-actions"><button className="review-new-primary" onClick={launch}>כתבו עלינו המלצה</button><GoogleButton /></div>
+    <div className="review-writing-actions">{configured && <button className="review-new-primary" onClick={launch}>כתבו עלינו המלצה</button>}<GoogleButton /></div>
     <dialog ref={dialog} className="review-writing-dialog" aria-labelledby="review-writing-title" onClose={() => setOpen(false)} onCancel={e => { if (sending) e.preventDefault(); }}>
       <div className="review-dialog-head"><h3 id="review-writing-title">{saved ? "תודה על ההמלצה" : "שתפו אותנו בחוויה שלכם"}</h3><button type="button" onClick={close} disabled={sending} aria-label="סגירת הטופס">×</button></div>
       {saved ? <div className="review-thanks" role="status"><p>תודה רבה על ההמלצה ועל האמון בלויתן הנדסה!</p><p>ההמלצה נשמרה ותפורסם לאחר בדיקה ואישור.</p>{googleReviewUrl() && <><p>נשמח אם תשתפו את החוויה שלכם גם בגוגל.</p><GoogleButton /></>}<button className="review-new-secondary" onClick={close}>סיום</button></div> : !configured ? <p>כתיבת המלצות באתר תהיה זמינה בקרוב. תודה על הסבלנות.</p> : <form onSubmit={submit}>
