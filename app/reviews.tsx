@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import reviews from "./reviews.json";
+import ReviewSubmission from "./review-submission";
 import WhatsAppIcon from "./whatsapp-icon";
 import { whatsappLink } from "../lib/business";
 
@@ -77,6 +78,7 @@ export default function Reviews() {
       <div className="reviews-expansion-inner"><div className="reviews-grid">{reviews.slice(4).map(review => <ReviewCard key={review.name} {...review} />)}</div></div>
     </div>
     {expanded && <button className="reviews-collapse-bottom" type="button" onClick={toggleReviews}>צמצום חוות הדעת ↑</button>}
+    <ReviewSubmission />
     <p className="reviews-bridge" data-review-reveal>הם כבר בחרו לבדוק בראש שקט. <strong>עכשיו תורכם.</strong></p>
     <div className="reviews-cta" aria-labelledby="reviews-cta-title">
       <p className="eyebrow">הנכס שלכם. השקט שלכם.</p>

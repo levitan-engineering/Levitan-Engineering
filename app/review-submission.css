@@ -1,0 +1,36 @@
+/* Additive only: none of the existing review-card or page rules are overridden. */
+.review-additions{max-width:1180px;margin:28px auto 0;color:#152e43}
+.review-additions .review-writing-actions{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px}
+.review-additions :is(.review-new-primary,.review-new-secondary){display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:12px 22px;border:1px solid #152e43;border-radius:8px;text-decoration:none;font:500 15px/1.6 Heebo,sans-serif;cursor:pointer;transition:background .25s,transform .25s}
+.review-additions .review-new-primary{background:#c5a46b;color:#152e43;border-color:#c5a46b}
+.review-additions .review-new-secondary{background:#fff;color:#152e43}
+.review-additions svg{width:18px;height:18px;flex:none}
+.review-additions .review-site-list{margin-bottom:28px}
+.review-additions .review-site-list h3{font:600 20px/1.5 Heebo,sans-serif;margin:0 0 20px}
+.review-additions .review-writing-dialog{width:min(560px,calc(100% - 32px));max-height:calc(100dvh - 40px);padding:28px;background:#fff;border:1px solid #dce3eb;border-top:3px solid #c5a46b;border-radius:14px;color:#152e43;box-shadow:0 18px 70px #152e4326}
+.review-additions .review-writing-dialog::backdrop{background:rgb(15 33 48/.55)}
+.review-additions .review-dialog-head{display:flex;align-items:start;justify-content:space-between;gap:14px;margin-bottom:18px}
+.review-additions .review-dialog-head h3{font:600 24px/1.4 Heebo,sans-serif;margin:0;text-wrap:balance}
+.review-additions .review-dialog-head button{width:44px;height:44px;flex:none;background:#f5f6f8;border:1px solid #dce3eb;border-radius:8px;font-size:27px;color:#152e43;cursor:pointer}
+.review-additions .review-writing-dialog p{font-size:16px;line-height:1.8;color:#536579}
+.review-additions form>label{display:grid;gap:8px;font-size:15px;margin-block:18px}
+.review-additions :is(input:not([type=radio]):not([type=checkbox]),textarea,select){box-sizing:border-box;width:100%;min-height:48px;padding:11px 12px;border:1px solid #a6b4c2;border-radius:7px;background:#fff;color:#152e43;font:400 16px/1.7 Assistant,sans-serif}
+.review-additions textarea{resize:vertical}
+.review-additions .review-rating{border:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}
+.review-additions .review-rating legend{margin-bottom:10px;font-size:15px}
+.review-additions .review-rating label{position:relative;cursor:pointer;min-width:44px;min-height:48px;display:grid;place-items:center}
+.review-additions .review-rating input{position:absolute;opacity:0;width:100%;height:100%;inset:0;cursor:pointer}
+.review-additions .review-rating span[aria-hidden]{font-size:30px;color:#98743a}
+.review-additions .review-rating label:has(input:focus-visible){outline:3px solid #98743a;border-radius:5px}
+.review-additions form>.review-consent{display:flex;align-items:start;gap:10px;font-size:14px;line-height:1.7}
+.review-additions .review-consent input{width:22px;height:22px;flex:none;margin-top:2px;accent-color:#152e43}
+.review-additions .review-honeypot,.review-additions .review-visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.review-additions .review-captcha{margin-block:18px;min-height:65px;overflow:hidden}
+.review-additions .review-form-error{color:#943c30!important;background:#fff3ef;padding:12px;border-radius:6px}
+.review-additions :is(button,a,input,select,textarea):focus-visible{outline:3px solid #98743a;outline-offset:3px}
+.review-additions button:disabled{opacity:.6;cursor:not-allowed}
+.review-additions .review-thanks{display:flex;flex-direction:column;align-items:start;gap:10px}
+.review-additions .review-thanks p{margin:0 0 8px}
+@media(hover:hover){.review-additions .review-new-primary:hover{background:#dfc393}.review-additions .review-new-secondary:hover{background:#edf1f5}}
+@media(max-width:560px){.review-additions .review-writing-actions{flex-direction:column;align-items:stretch}.review-additions .review-writing-dialog{padding:22px;max-height:calc(100dvh - 24px)}.review-additions .review-dialog-head h3{font-size:21px}.review-additions form>.review-new-primary{width:100%}}
+@media(prefers-reduced-motion:reduce){.review-additions *{animation:none!important;transition:none!important}}

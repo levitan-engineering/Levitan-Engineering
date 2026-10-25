@@ -1,0 +1,4 @@
+# Public submission endpoint verifies Turnstile itself; admin operations validate JWT
+# against Auth and the private administrator allowlist on every request.
+[functions.reviews]
+verify_jwt = false
