@@ -8,7 +8,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "לויתן הנדסה | בדק בית והמדריך לרוכשי דירה",
-  description: "בדק בית מקצועי וליווי אישי של לוויתן הנדסה. מדריך לרוכשי דירה חדשה: מה בודקים, מתי מזמינים בדיקה ואיך מתעדים ליקויים מול הקבלן.",
+  description: "בדק בית מקצועי וליווי אישי של לויתן הנדסה. מדריך לרוכשי דירה חדשה: מה בודקים, מתי מזמינים בדיקה ואיך מתעדים ליקויים מול הקבלן.",
 };
 
 const services = [
@@ -67,7 +67,7 @@ export default function Home() {
         <span id="finder" className="services-anchor" aria-hidden="true" />
         <p className="eyebrow">השירותים שלנו</p>
         <h2 id="home-services-title">בדיקות הנדסיות בהתאמה לנכס שלכם</h2>
-        <p>מדירה חדשה מקבלן ועד בדיקת שטחים משותפים – הכירו את השירותים המקצועיים של לוויתן הנדסה.</p>
+        <p>מדירה חדשה מקבלן ועד בדיקת שטחים משותפים – הכירו את השירותים המקצועיים של לויתן הנדסה.</p>
         <a className="journey-primary" href="/services/">לכל השירותים <span aria-hidden="true">←</span></a>
       </section>
 

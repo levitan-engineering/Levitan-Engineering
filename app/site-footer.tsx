@@ -44,8 +44,8 @@ export default function SiteFooter() {
       </section>
       <div className="footer-premium-main" data-footer-reveal>
         <div className="footer-premium-brand">
-          <a className="footer-brand-link" href="#top" aria-label="לוויתן הנדסה — חזרה לראש העמוד"><img src="/assets/img/logo-transparent.png" width="1556" height="1332" alt="לוויתן הנדסה" loading="lazy" /></a>
-          <p>לוויתן הנדסה – בדק בית, בדיקות איכות בנייה וחוות דעת הנדסיות. מקצועיות, דיוק ושקט נפשי בכל בדיקה.</p>
+          <a className="footer-brand-link" href="#top" aria-label="לויתן הנדסה — חזרה לראש העמוד"><img src="/assets/img/logo-transparent.png" width="1556" height="1332" alt="לויתן הנדסה" loading="lazy" /></a>
+          <p>לויתן הנדסה – בדק בית, בדיקות איכות בנייה וחוות דעת הנדסיות. מקצועיות, דיוק ושקט נפשי בכל בדיקה.</p>
         </div>
         <nav className="footer-premium-column" aria-labelledby="footer-nav-title">
           <h3 id="footer-nav-title">ניווט</h3>
@@ -63,7 +63,7 @@ export default function SiteFooter() {
           <p>שפלה · דרום</p><small>מענה אישי מידידיה לויתן</small>
         </div>
       </div>
-      <div className="footer-premium-bottom"><span>© 2026 לוויתן הנדסה. כל הזכויות שמורות.</span><a href="#top">חזרה למעלה <span aria-hidden="true">↑</span></a></div>
+      <div className="footer-premium-bottom"><span>© 2026 לויתן הנדסה. כל הזכויות שמורות.</span><a href="#top">חזרה למעלה <span aria-hidden="true">↑</span></a></div>
     </div>
   </footer>;
 }
