@@ -79,14 +79,14 @@ export default function ReviewSubmission() {
     <div className="review-writing-actions"><button className="review-new-primary" onClick={launch}>כתבו עלינו המלצה</button><GoogleButton /></div>
     <dialog ref={dialog} className="review-writing-dialog" aria-labelledby="review-writing-title" onClose={() => setOpen(false)} onCancel={e => { if (sending) e.preventDefault(); }}>
       <div className="review-dialog-head"><h3 id="review-writing-title">{saved ? "תודה על ההמלצה" : "שתפו אותנו בחוויה שלכם"}</h3><button type="button" onClick={close} disabled={sending} aria-label="סגירת הטופס">×</button></div>
-      {saved ? <div className="review-thanks" role="status"><p>תודה רבה על ההמלצה ועל האמון בלוויתן הנדסה!</p><p>ההמלצה נשמרה ותפורסם לאחר בדיקה ואישור.</p>{googleReviewUrl() && <><p>נשמח אם תשתפו את החוויה שלכם גם בגוגל.</p><GoogleButton /></>}<button className="review-new-secondary" onClick={close}>סיום</button></div> : !configured ? <p>כתיבת המלצות באתר תהיה זמינה בקרוב. תודה על הסבלנות.</p> : <form onSubmit={submit}>
+      {saved ? <div className="review-thanks" role="status"><p>תודה רבה על ההמלצה ועל האמון בלויתן הנדסה!</p><p>ההמלצה נשמרה ותפורסם לאחר בדיקה ואישור.</p>{googleReviewUrl() && <><p>נשמח אם תשתפו את החוויה שלכם גם בגוגל.</p><GoogleButton /></>}<button className="review-new-secondary" onClick={close}>סיום</button></div> : !configured ? <p>כתיבת המלצות באתר תהיה זמינה בקרוב. תודה על הסבלנות.</p> : <form onSubmit={submit}>
         <p>ספרו על השירות שקיבלתם. ההמלצה תפורסם רק לאחר בדיקה ואישור.</p>
         <label>שם הלקוח<input name="name" required minLength={2} maxLength={80} autoComplete="name" /></label>
         <label>סוג השירות<select name="service" required defaultValue=""><option value="" disabled>בחרו שירות</option>{reviewServices.map(service => <option key={service}>{service}</option>)}</select></label>
         <fieldset className="review-rating"><legend>הדירוג שלכם</legend>{[1,2,3,4,5].map(value => <label key={value}><input type="radio" name="rating" value={value} checked={rating === value} onChange={() => setRating(value)} required /><span aria-hidden="true">{value <= rating ? "★" : "☆"}</span><span className="review-visually-hidden">{value} מתוך 5 כוכבים</span></label>)}</fieldset>
         <label>ההמלצה שלכם<textarea name="quote" required minLength={10} maxLength={2000} rows={5} /></label>
         <div className="review-honeypot" aria-hidden="true"><label>אתר אינטרנט<input name="website" tabIndex={-1} autoComplete="off" /></label></div>
-        <label className="review-consent"><input type="checkbox" name="consent" required /><span>אני מסכים/ה לפרסום שמי, הדירוג וההמלצה באתר לוויתן הנדסה, ומאשר/ת שההמלצה מתארת חוויה אישית אמיתית.</span></label>
+        <label className="review-consent"><input type="checkbox" name="consent" required /><span>אני מסכים/ה לפרסום שמי, הדירוג וההמלצה באתר לויתן הנדסה, ומאשר/ת שההמלצה מתארת חוויה אישית אמיתית.</span></label>
         <div ref={widget} className="review-captcha" />
         {error && <p className="review-form-error" role="alert">{error}</p>}
         <button className="review-new-primary" type="submit" disabled={sending || !captcha}>{sending ? "שומרים את ההמלצה…" : "שליחת המלצה"}</button>

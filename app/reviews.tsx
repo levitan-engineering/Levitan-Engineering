@@ -69,7 +69,7 @@ export default function Reviews() {
       <p className="eyebrow">לקוחות ממליצים</p>
       <h2 id="reviews-title"><span>המקצועיות שלנו.</span> <span>הביטחון שלכם.</span></h2>
       <span className="reviews-gold-rule" aria-hidden="true" />
-      <p className="reviews-intro">לקוחות שבחרו בלוויתן הנדסה משתפים בחוויית השירות, באיכות הבדיקה ובשקט הנפשי שקיבלו לאורך הדרך.</p>
+      <p className="reviews-intro">לקוחות שבחרו בלויתן הנדסה משתפים בחוויית השירות, באיכות הבדיקה ובשקט הנפשי שקיבלו לאורך הדרך.</p>
     </div>
     <div className="reviews-trust" data-review-reveal><span className="review-stars" aria-hidden="true">★★★★★</span><span>מבוסס על {reviews.length} חוות דעת של לקוחות</span></div>
     <div className="reviews-grid">{reviews.slice(0, 4).map(review => <ReviewCard key={review.name} {...review} />)}</div>
@@ -84,7 +84,7 @@ export default function Reviews() {
       <p className="eyebrow">הנכס שלכם. השקט שלכם.</p>
       <h3 id="reviews-cta-title">גם אתם רוצים להיכנס לנכס בראש שקט?</h3>
       <p>בדיקת בדק בית מקצועית ויסודית תעזור לכם לזהות ליקויי בנייה, להבין את מצב הנכס ולקבל החלטות מושכלות לפני קבלת המפתח.</p>
-      <div className="reviews-cta-actions"><a className="reviews-book" href="#contact">לתיאום בדיקה מקצועית <span aria-hidden="true">←</span></a><a className="reviews-whatsapp" href={whatsappLink("שלום ידידיה, הגעתי לאתר לוויתן הנדסה ואשמח לתאם בדיקת בדק בית מקצועית.")} target="_blank" rel="noreferrer"><WhatsAppIcon />דברו איתנו ב־WhatsApp</a></div>
+      <div className="reviews-cta-actions"><a className="reviews-book" href="#contact">לתיאום בדיקה מקצועית <span aria-hidden="true">←</span></a><a className="reviews-whatsapp" href={whatsappLink("שלום ידידיה, הגעתי לאתר לויתן הנדסה ואשמח לתאם בדיקת בדק בית מקצועית.")} target="_blank" rel="noreferrer"><WhatsAppIcon />דברו איתנו ב־WhatsApp</a></div>
     </div>
   </section>;
 }
