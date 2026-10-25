@@ -60,7 +60,7 @@ export default function SiteFooter() {
           <a className="footer-premium-phone" href={`tel:${BUSINESS.telephone}`}><ContactIcon type="phone" /><bdi>{BUSINESS.displayPhone}</bdi></a>
           <a className="footer-premium-email" href={`mailto:${BUSINESS.email}`}><ContactIcon type="email" /><bdi>{BUSINESS.email}</bdi></a>
           <a className="footer-direct-whatsapp" href={whatsappLink()} target="_blank" rel="noreferrer"><WhatsAppIcon /><span>דברו איתנו ב־WhatsApp</span></a>
-          <p>מרכז · שפלה · ירושלים</p><small>מענה אישי מידידיה לויתן</small>
+          <p>שפלה · דרום</p><small>מענה אישי מידידיה לויתן</small>
         </div>
       </div>
       <div className="footer-premium-bottom"><span>© 2026 לוויתן הנדסה. כל הזכויות שמורות.</span><a href="#top">חזרה למעלה <span aria-hidden="true">↑</span></a></div>
