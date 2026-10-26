@@ -24,10 +24,9 @@ export default function ProfessionalEquipment() {
     update(); motion.addEventListener("change", update);
     return () => { observer?.disconnect(); motion.removeEventListener("change", update); };
   }, []);
-  if (!equipmentPhoto) return null;
   return <section ref={root} className="professional-equipment" aria-labelledby="equipment-title" dir="rtl">
     <h2 id="equipment-title">הציוד המקצועי שלנו</h2>
     <p>בדיקות מקצועיות באמצעות ציוד מדידה ובדיקה מתקדם, בהתאם לצורכי הבדיקה.</p>
-    <figure><img src={equipmentPhoto.src} width={equipmentPhoto.width} height={equipmentPhoto.height} alt={equipmentPhoto.alt} loading="lazy" decoding="async" /></figure>
+    <figure>{equipmentPhoto ? <img src={equipmentPhoto.src} width={equipmentPhoto.width} height={equipmentPhoto.height} alt={equipmentPhoto.alt} loading="lazy" decoding="async" /> : <div className="equipment-photo-placeholder" role="img" aria-label="מקום לתמונת הציוד המקצועי — תמונה תתווסף בהמשך" />}</figure>
   </section>;
 }
