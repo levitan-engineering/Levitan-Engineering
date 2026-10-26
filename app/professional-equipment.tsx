@@ -27,6 +27,6 @@ export default function ProfessionalEquipment() {
   return <section ref={root} className="professional-equipment" aria-labelledby="equipment-title" dir="rtl">
     <h2 id="equipment-title">הציוד המקצועי שלנו</h2>
     <p>בדיקות מקצועיות באמצעות ציוד מדידה ובדיקה מתקדם, בהתאם לצורכי הבדיקה.</p>
-    <figure>{equipmentPhoto ? <img src={equipmentPhoto.src} width={equipmentPhoto.width} height={equipmentPhoto.height} alt={equipmentPhoto.alt} loading="lazy" decoding="async" /> : <div className="equipment-photo-placeholder" role="img" aria-label="מקום לתמונת הציוד המקצועי — תמונה תתווסף בהמשך" />}</figure>
+    <figure>{equipmentPhoto ? <img src={equipmentPhoto.src} width={equipmentPhoto.width} height={equipmentPhoto.height} alt={equipmentPhoto.alt} loading="lazy" decoding="async" /> : <div className="equipment-photo-placeholder" role="img" aria-label="מקום לתמונת הציוד המקצועי — תמונה תתווסף בהמשך" />}{equipmentPhoto?.illustration && <figcaption>תמונה להמחשה בלבד</figcaption>}</figure>
   </section>;
 }
