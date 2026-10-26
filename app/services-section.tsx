@@ -9,7 +9,7 @@ import { normalizePhone } from "../lib/inspection";
 const services = [
   { id: "new-apartment", title: "בדק בית – דירה חדשה מקבלן", description: "בדיקה הנדסית מקיפה לאיתור ליקויי בנייה, גמר ומערכות לפני קבלת הדירה, כדי שתדעו מה מצב הנכס לפני הכניסה.", action: "להתאמת הבדיקה" },
   { id: "used-apartment", title: "בדיקת דירה – יד שנייה", description: "בדיקה מקצועית של מצב הנכס לפני רכישה, לזיהוי ליקויים, סימני רטיבות ובלאי שעשויים להשפיע על החלטת הקנייה.", action: "לפרטי השירות" },
-  { id: "engineering-opinion", title: "חוות דעת הנדסית", description: "מסמך מקצועי, מנומק ומתועד שמרכז את הממצאים בנכס ומסייע להבין אותם ולהציגם בפני הגורמים הרלוונטיים.", action: "לפרטי השירות" },
+  { id: "engineering-opinion", cardTitle: "חוות דעת הנדסית מבוססת תקנים", cardDescription: "חוות דעת מקצועית ומפורטת בהתאם לתקנים ישראליים (ת״י), הכוללת תיעוד ליקויי בנייה ואסמכתאות מקצועיות, לשימוש מול קבלנים ובמסגרת הליכים משפטיים במידת הצורך.", title: "חוות דעת הנדסית", description: "מסמך מקצועי, מנומק ומתועד שמרכז את הממצאים בנכס ומסייע להבין אותם ולהציגם בפני הגורמים הרלוונטיים.", action: "לפרטי השירות" },
   { id: "shared-areas", title: "בדיקת שטחים משותפים", description: "בדיקה הנדסית של השטחים והמערכות המשותפות בבניין, לאיתור ליקויי בנייה וגמר.", action: "לפרטי השירות" },
 ];
 function Icon({ index = 0 }: { index?: number }) { return <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{index === 0 ? <path d="M4 15 16 4l12 11M7 13v15h18V13M13 28V18h6v10" /> : index === 1 ? <><rect x="7" y="6" width="19" height="23" rx="2"/><path d="M12 6V3h9v3M12 15l3 3 6-6M12 24h9"/></> : index === 2 ? <><path d="M8 3h12l6 6v20H8zM20 3v7h6M12 19l3 3 6-6"/></> : <><path d="M7 29V4h15v25M22 14h5v15M4 29h25M13 29v-5h4v5M11 9h1m5 0h1m-7 5h1m5 0h1m-7 5h1m5 0h1"/></>}</svg>; }
@@ -76,7 +76,7 @@ export default function ServicesSection({ standalone = false }: { standalone?: b
     <header className="services-premium-heading"><p>לויתן הנדסה | מומחיות בבדיקות מבנים</p><Heading id="services-heading">השירותים שלנו</Heading><span className="services-gold-rule" aria-hidden="true"/><p className="services-premium-lead">בדיקות הנדסיות מקצועיות לאיתור ליקויי בנייה, הערכת מצב הנכס וקבלת החלטות בביטחון.</p></header>
     <div className="services-premium-grid">{services.map((service,index) => <article className={`services-premium-card ${active===service.id?'is-active':''}`} key={service.id}>
       <div className="services-card-top"><span className="services-card-icon"><Icon index={index}/></span><span className="services-card-number">0{index+1}</span></div>
-      <h3>{service.title}</h3><p>{service.description}</p><button type="button" className="services-card-action" aria-expanded={active===service.id} aria-controls={`service-panel-${service.id}`} onClick={() => select(service.id)}>{service.action}<span aria-hidden="true">←</span></button>
+      <h3>{service.cardTitle || service.title}</h3><p>{service.cardDescription || service.description}</p><button type="button" className="services-card-action" aria-expanded={active===service.id} aria-controls={`service-panel-${service.id}`} onClick={() => select(service.id)}>{service.action}<span aria-hidden="true">←</span></button>
     </article>)}</div>
     <div id="new-apartment" className="services-anchor" />
     <div id="shared-areas" className="services-anchor" />
