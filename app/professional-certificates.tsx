@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 type Certificate = { title: string; description: string; image: string | null };
 // Add original certificate photos here when the business owner supplies them.
 const certificates: Certificate[] = [
- { title: "הנדסאי בניין", description: "תעודת ההכשרה המקצועית", image: null },
+ { title: "הנדסאי בניין", description: "תעודת ההכשרה המקצועית", image: "/assets/img/building-technician-diploma.jpg" },
  { title: "בדק בית ואיכות הבנייה", description: "תעודת סיום הקורס", image: null },
 ];
 export default function ProfessionalCertificates() {
