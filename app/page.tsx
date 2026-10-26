@@ -1,4 +1,5 @@
 import AboutSection from "./about-section";
+import HomeEntryScroll from "./home-entry-scroll";
 import { BUSINESS, NEW_APARTMENT_PATH, whatsappLink } from "../lib/business";
 import Reviews from "./reviews";
 import BuyerGuide from "./buyer-guide";
@@ -26,6 +27,7 @@ const checks = [
 export default function Home() {
   return (
     <main>
+      <HomeEntryScroll />
       <header className="site-header">
         <a className="logo" href="#top" aria-label="לויתן הנדסה">
           <img className="header-brand-logo" src="/assets/img/logo-transparent.png" width="1556" height="1332" alt="" /><span className="brand-copy"><span className="brand-tagline">בדק בית | איכות הבנייה</span></span>
