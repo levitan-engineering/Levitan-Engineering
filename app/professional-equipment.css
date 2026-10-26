@@ -6,3 +6,5 @@
 .professional-equipment.equipment-awaiting{opacity:0;transform:translateY(14px)}
 @media(max-width:640px){.professional-equipment{padding:32px 18px 44px}.professional-equipment>p{font-size:16px;margin-bottom:20px}.professional-equipment figure{border-radius:14px}}
 @media(prefers-reduced-motion:reduce){.professional-equipment,.professional-equipment.equipment-awaiting{opacity:1;transform:none;transition:none}}
+
+.professional-equipment .equipment-photo-placeholder{width:100%;aspect-ratio:16/9;background:#f8f9fa}
