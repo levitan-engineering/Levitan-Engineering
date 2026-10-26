@@ -58,7 +58,7 @@ export default function Home() {
       </section>
 
       <section className="signal-bar" aria-label="יתרונות מרכזיים">
-        <span>הנדסאי בניין מוסמך</span><span>דוח עד 5 ימי עסקים</span><span>מכשור לאיתור רטיבות</span><span>ליווי גם אחרי הבדיקה</span>
+        <span>הנדסאי בניין מוסמך</span><span>דוח עד 7 ימי עסקים</span><span>מכשור לאיתור רטיבות</span><span>ליווי גם אחרי הבדיקה</span>
       </section>
 
 
