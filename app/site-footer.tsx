@@ -53,14 +53,14 @@ export default function SiteFooter() {
         </nav>
         <nav className="footer-premium-column" aria-labelledby="footer-services-title">
           <h3 id="footer-services-title">שירותים</h3>
-          <a href="/services/#new-apartment">בדק בית לדירה חדשה מקבלן</a><a href="/services/#used-apartment">בדיקת דירה יד שנייה</a><a href="/services/#engineering-opinion">חוות דעת הנדסית</a><a href="/services/#shared-areas">בדיקת שטחים משותפים</a>
+          <a href="/services/#new-apartment">בדק בית לדירה חדשה מקבלן</a><a href="/services/#used-apartment">בדיקת דירה יד שנייה</a><a href="/services/#engineering-opinion">חוות דעת הנדסית</a><a href="/services/#shared-areas">בדיקת שטחים משותפים</a><a href="/services/#supervision">פיקוח בנייה ושיפוצים</a>
         </nav>
         <div className="footer-premium-contact">
           <h3>מדברים ישירות</h3>
           <a className="footer-premium-phone" href={`tel:${BUSINESS.telephone}`}><ContactIcon type="phone" /><bdi>{BUSINESS.displayPhone}</bdi></a>
           <a className="footer-premium-email" href={`mailto:${BUSINESS.email}`}><ContactIcon type="email" /><bdi>{BUSINESS.email}</bdi></a>
           <a className="footer-direct-whatsapp" href={whatsappLink()} target="_blank" rel="noreferrer"><WhatsAppIcon /><span>דברו איתנו ב־WhatsApp</span></a>
-          <p>שפלה · דרום</p><small>מענה אישי מידידיה לויתן</small>
+          <a href="/services/#supervision-contact">לפנייה בנושא פיקוח בנייה</a><p>שפלה · דרום</p><small>מענה אישי מידידיה לויתן</small>
         </div>
       </div>
       <div className="footer-premium-bottom"><span>© 2026 לויתן הנדסה. כל הזכויות שמורות.</span><a href="#top">חזרה למעלה <span aria-hidden="true">↑</span></a></div>
