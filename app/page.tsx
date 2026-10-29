@@ -48,7 +48,7 @@ export default function Home() {
         <div className="hero-copy">
           <p className="eyebrow">לויתן הנדסה · בדק בית ובקרת איכות בנייה</p>
           <h1>הבית שלכם.<br /><em>האחריות שלנו.</em></h1>
-          <p className="hero-lead hero-service-line hero-service-summary"><span className="hero-service-primary">בדק בית ואיכות הבנייה</span><span className="hero-service-secondary">פיקוח בנייה <span aria-hidden="true">|</span> ניהול פרויקטים</span></p>
+          <p className="hero-lead hero-service-line hero-service-summary"><span className="hero-service-primary">בדק בית ואיכות הבנייה</span><span className="hero-service-secondary">פיקוח בנייה ובקרת איכות</span></p>
           <div className="hero-actions">
             <a className="primary" href={whatsappLink()} target="_blank" rel="noreferrer">לתיאום שיחת ייעוץ <WhatsAppIcon /></a>
             <a className="phone" href={`tel:${BUSINESS.telephone}`}>055‑662‑5745</a>
