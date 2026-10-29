@@ -1,3 +1,4 @@
+import "./brand-messaging.css";
 import MobileNav from "./mobile-nav";
 import AboutSection from "./about-section";
 import HomeEntryScroll from "./home-entry-scroll";
@@ -31,7 +32,7 @@ export default function Home() {
       <HomeEntryScroll />
       <header className="site-header">
         <a className="logo" href="#top" aria-label="לויתן הנדסה">
-          <img className="header-brand-logo" src="/assets/img/logo-transparent.png" width="1556" height="1332" alt="" /><span className="brand-copy"><span className="brand-tagline">בדק בית | איכות הבנייה</span></span>
+          <img className="header-brand-logo" src="/assets/img/logo-transparent.png" width="1556" height="1332" alt="" /><span className="brand-copy"><span className="brand-tagline">בדק בית | פיקוח בנייה</span></span>
         </a>
         <nav aria-label="ניווט ראשי">
           <a href="/services/">שירותים</a><a href="/services/#supervision">פיקוח בנייה</a>
@@ -47,9 +48,9 @@ export default function Home() {
         <div className="hero-copy">
           <p className="eyebrow">לויתן הנדסה · בדק בית ובקרת איכות בנייה</p>
           <h1>הבית שלכם.<br /><em>האחריות שלנו.</em></h1>
-          <p className="hero-lead hero-service-line"><span>בדק בית מקצועי</span><span aria-hidden="true">|</span><span>איתור ליקויי בנייה</span><span aria-hidden="true">|</span><span>חוות דעת הנדסית</span></p>
+          <p className="hero-lead hero-service-line hero-service-summary"><span className="hero-service-primary">בדק בית ואיכות הבנייה</span><span className="hero-service-secondary">פיקוח בנייה <span aria-hidden="true">|</span> ניהול פרויקטים</span></p>
           <div className="hero-actions">
-            <a className="primary" href={whatsappLink()} target="_blank" rel="noreferrer">לתיאום בדיקה <WhatsAppIcon /></a>
+            <a className="primary" href={whatsappLink()} target="_blank" rel="noreferrer">לתיאום שיחת ייעוץ <WhatsAppIcon /></a>
             <a className="phone" href={`tel:${BUSINESS.telephone}`}>055‑662‑5745</a>
           </div>
           <a className="proof hero-reviews-link" href="#reviews"><span aria-hidden="true">★</span><span>לקוחות מספרים</span><span className="reviews-link-arrow" aria-hidden="true">←</span></a>
