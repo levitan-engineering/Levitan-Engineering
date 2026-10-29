@@ -1,3 +1,4 @@
+import MobileNav from "./mobile-nav";
 import AboutSection from "./about-section";
 import HomeEntryScroll from "./home-entry-scroll";
 import { BUSINESS, NEW_APARTMENT_PATH, whatsappLink } from "../lib/business";
@@ -39,7 +40,7 @@ export default function Home() {
           <a href="#reviews">המלצות</a>
           <a href="#contact">יצירת קשר</a>
         </nav>
-        <details className="mobile-nav"><summary aria-label="פתיחת תפריט ניווט"><span aria-hidden="true">☰</span></summary><nav aria-label="תפריט נייד"><a href="#top">ראשי</a><a href="/services/">שירותים</a><a href="/services/#supervision">פיקוח בנייה</a><a href="#about">אודות</a><a href="#reviews">המלצות</a><a href="#contact">יצירת קשר</a></nav></details>
+        <MobileNav />
       </header>
 
       <section className="hero" id="top">
