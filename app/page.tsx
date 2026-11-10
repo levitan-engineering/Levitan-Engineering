@@ -1,5 +1,3 @@
-import "./brand-messaging.css";
-import MobileNav from "./mobile-nav";
 import AboutSection from "./about-section";
 import HomeEntryScroll from "./home-entry-scroll";
 import { BUSINESS, NEW_APARTMENT_PATH, whatsappLink } from "../lib/business";
@@ -10,8 +8,8 @@ import WhatsAppIcon from "./whatsapp-icon";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "לויתן הנדסה | בדק בית ופיקוח בנייה",
-  description: "בדק בית מקצועי, פיקוח על בניית בתים פרטיים ושיפוצים וליווי אישי של לויתן הנדסה. מדריך לרוכשי דירה חדשה: מה בודקים, מתי מזמינים בדיקה ואיך מתעדים ליקויים מול הקבלן.",
+  title: "לויתן הנדסה | בדק בית והמדריך לרוכשי דירה",
+  description: "בדק בית מקצועי וליווי אישי של לויתן הנדסה. מדריך לרוכשי דירה חדשה: מה בודקים, מתי מזמינים בדיקה ואיך מתעדים ליקויים מול הקבלן.",
 };
 
 const services = [
@@ -32,25 +30,25 @@ export default function Home() {
       <HomeEntryScroll />
       <header className="site-header">
         <a className="logo" href="#top" aria-label="לויתן הנדסה">
-          <img className="header-brand-logo" src="/assets/img/logo-transparent.png" width="1556" height="1332" alt="" /><span className="brand-copy"><span className="brand-tagline">בדק בית | פיקוח בנייה</span></span>
+          <img className="header-brand-logo" src="/assets/img/logo-transparent.png" width="1556" height="1332" alt="" /><span className="brand-copy"><span className="brand-tagline">בדק בית | איכות הבנייה</span></span>
         </a>
         <nav aria-label="ניווט ראשי">
-          <a href="/services/">שירותים</a><a href="/services/#supervision">פיקוח בנייה</a>
+          <a href="/services/">שירותים</a>
           <a href="#check">מה נבדק</a>
           <a href="#about">אודות</a>
           <a href="#reviews">המלצות</a>
           <a href="#contact">יצירת קשר</a>
         </nav>
-        <MobileNav />
+        <details className="mobile-nav"><summary aria-label="פתיחת תפריט ניווט"><span aria-hidden="true">☰</span></summary><nav aria-label="תפריט נייד"><a href="#top">ראשי</a><a href="/services/">שירותים</a><a href="#about">אודות</a><a href="#reviews">המלצות</a><a href="#contact">יצירת קשר</a></nav></details>
       </header>
 
       <section className="hero" id="top">
         <div className="hero-copy">
           <p className="eyebrow">לויתן הנדסה · בדק בית ובקרת איכות בנייה</p>
           <h1>הבית שלכם.<br /><em>האחריות שלנו.</em></h1>
-          <p className="hero-lead hero-service-line hero-service-summary"><span className="hero-service-primary">בדק בית ואיכות הבנייה</span><span className="hero-service-secondary">פיקוח בנייה ובקרת איכות</span></p>
+          <p className="hero-lead hero-service-line"><span>בדק בית מקצועי</span><span aria-hidden="true">|</span><span>איתור ליקויי בנייה</span><span aria-hidden="true">|</span><span>חוות דעת הנדסית</span></p>
           <div className="hero-actions">
-            <a className="primary" href={whatsappLink()} target="_blank" rel="noreferrer">לתיאום שיחת ייעוץ <WhatsAppIcon /></a>
+            <a className="primary" href={whatsappLink()} target="_blank" rel="noreferrer">לתיאום בדיקה <WhatsAppIcon /></a>
             <a className="phone" href={`tel:${BUSINESS.telephone}`}>055‑662‑5745</a>
           </div>
           <a className="proof hero-reviews-link" href="#reviews"><span aria-hidden="true">★</span><span>לקוחות מספרים</span><span className="reviews-link-arrow" aria-hidden="true">←</span></a>
@@ -71,7 +69,7 @@ export default function Home() {
         <span id="finder" className="services-anchor" aria-hidden="true" />
         <p className="eyebrow">השירותים שלנו</p>
         <h2 id="home-services-title">בדיקות הנדסיות בהתאמה לנכס שלכם</h2>
-        <p>בדק בית, בדיקת שטחים משותפים ופיקוח בנייה ובקרת איכות לבתים פרטיים ולשיפוצים – הכירו את השירותים המקצועיים של לויתן הנדסה.</p>
+        <p>מדירה חדשה מקבלן ועד בדיקת שטחים משותפים – הכירו את השירותים המקצועיים של לויתן הנדסה.</p>
         <a className="journey-primary" href="/services/">לכל השירותים <span aria-hidden="true">←</span></a>
       </section>
 
